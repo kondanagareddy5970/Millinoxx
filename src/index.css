@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #0A1628;
+  --color-gold: #C9A84C;
+  --color-gold-light: #E8C97A;
+  --color-white: #FFFFFF;
+  --color-light-bg: #F5F6FA;
+  --color-steel: #2563EB;
+  --color-text: #1A1A2E;
+  --color-muted: #6B7280;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+  --shadow-card: 0 4px 24px rgba(10,22,40,0.10);
+  --radius-card: 12px;
+  --transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    background: var(--color-white);
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-heading);
+  }
+}
+
+@layer components {
+  .btn-gold {
+    @apply bg-gold text-navy font-semibold px-8 py-3 rounded-sm transition-all duration-300 hover:bg-gold-light hover:shadow-gold inline-block tracking-wide;
+  }
+  .btn-outline-gold {
+    @apply border-2 border-gold text-gold font-semibold px-8 py-3 rounded-sm transition-all duration-300 hover:bg-gold hover:text-navy inline-block tracking-wide;
+  }
+  .section-title {
+    @apply font-heading text-4xl font-bold text-navy mb-4;
+  }
+  .section-subtitle {
+    @apply text-muted text-lg mb-10;
+  }
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-xl;
+  }
+  .gold-underline {
+    @apply relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-gold;
+  }
+}
+
+/* Swiper overrides */
+.swiper-button-next,
+.swiper-button-prev {
+  color: white !important;
+  background: rgba(255,255,255,0.2) !important;
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50% !important;
+  backdrop-filter: blur(4px);
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 18px !important;
+  font-weight: bold !important;
+}
+.swiper-pagination-bullet-active {
+  background: #C9A84C !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #C9A84C; border-radius: 3px; }
+
+/* Navbar transition */
+.navbar-transparent { background: transparent; box-shadow: none; }
+.navbar-solid { background: white; box-shadow: 0 2px 20px rgba(10,22,40,0.12); }
+
+/* Hero slider */
+.hero-slide {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Gallery lightbox */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+  animation: fadeDown 0.2s ease forwards;
+}
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Counter animation */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile drawer slide-in */
+@keyframes slideIn {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+/* Industry card */
+.industry-icon-card {
+  @apply flex flex-col items-center justify-center p-6 bg-white rounded-card shadow-card border border-transparent hover:border-gold transition-all duration-300 cursor-pointer hover:-translate-y-1;
+}
