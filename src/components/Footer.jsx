@@ -82,19 +82,39 @@ export default function Footer() {
           {/* Column 4 - Contact */}
           <div>
             <h4 className="font-heading text-lg font-semibold text-gold mb-5 pb-2 border-b border-gold/30">Contact Us</h4>
-            <ul className="space-y-3.5">
-              <li className="flex items-start gap-3 text-sm text-white/60">
-                <MapPin size={15} className="text-gold flex-shrink-0 mt-0.5" />
-                <span>HITEC City, Hyderabad, Telangana, India — 500081</span>
+            <ul className="space-y-5">
+
+              {/* Russia Office */}
+              <li>
+                <div className="flex items-center gap-1.5 mb-2">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-gold bg-gold/10 px-2 py-0.5 rounded">Global HQ</span>
+                </div>
+                <div className="flex items-start gap-3 text-sm text-white/60 mb-1.5">
+                  <MapPin size={15} className="text-gold flex-shrink-0 mt-0.5" />
+                  <span>105005, Moscow, St. Baumanskaya, 7, Bldg. 1, Room 22/1, Russia</span>
+                </div>
+                <div className="flex items-center gap-3 text-sm text-white/60">
+                  <Mail size={15} className="text-gold flex-shrink-0" />
+                  <a href="mailto:info@millinoxx.ru" className="hover:text-gold transition-colors break-all">info@millinoxx.ru</a>
+                </div>
               </li>
-              <li className="flex items-center gap-3 text-sm text-white/60">
-                <Phone size={15} className="text-gold flex-shrink-0" />
-                <a href="tel:+919959450031" className="hover:text-gold transition-colors">+91 9959450031</a>
+
+              {/* Hyderabad Office */}
+              <li>
+                <div className="flex items-center gap-1.5 mb-2">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-white/40">India Operations</span>
+                </div>
+                <div className="flex items-start gap-3 text-sm text-white/60 mb-1.5">
+                  <MapPin size={15} className="text-gold flex-shrink-0 mt-0.5" />
+                  <span>HITEC City, Hyderabad, Telangana, India — 500081</span>
+                </div>
+                <div className="flex items-center gap-3 text-sm text-white/60">
+                  <Phone size={15} className="text-gold flex-shrink-0" />
+                  <a href="tel:+919959450031" className="hover:text-gold transition-colors">+91 9959450031</a>
+                </div>
               </li>
-              <li className="flex items-center gap-3 text-sm text-white/60">
-                <Mail size={15} className="text-gold flex-shrink-0" />
-                <a href="mailto:srinivasu@millinoxx.com" className="hover:text-gold transition-colors break-all">srinivasu@millinoxx.com</a>
-              </li>
+
+              {/* Web */}
               <li className="flex items-center gap-3 text-sm text-white/60">
                 <Globe size={15} className="text-gold flex-shrink-0" />
                 <a href="https://www.millinoxx.com" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">www.millinoxx.com</a>

@@ -18,11 +18,14 @@ const navLinks = [
   {
     label: 'Services',
     dropdown: [
-      { label: 'International Recruitment Services', path: '/services/international-recruitment' },
-      { label: 'Indian Recruitment Services', path: '/services/indian-recruitment' },
-      { label: 'Shutdown & Turnaround Maintenance', path: '/services/shutdown-maintenance' },
-      { label: 'Deputation / Manpower Outsourcing & Consulting', path: '/services/deputation-outsourcing' },
+      { label: 'Artificial Intelligence Solutions', path: '/services/ai-solutions' },
+      { label: 'AI Automation & Intelligent Agents', path: '/services/ai-automation' },
+      { label: 'Machine Learning & Predictive Analytics', path: '/services/machine-learning' },
       { label: 'Information Technology Services', path: '/services/it-services' },
+      { label: 'Generative AI & LLM Development', path: '/services/gen-ai' },
+      { label: 'Cloud & DevOps Engineering', path: '/services/cloud-devops' },
+      { label: 'Cyber Security Solutions', path: '/services/cyber-security' },
+      { label: 'Data Engineering & Business Intelligence', path: '/services/data-engineering' },
     ],
   },
   {
@@ -219,7 +222,7 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="fixed inset-0 z-[200] flex">
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
-          <div className="relative w-80 max-w-[85vw] bg-white h-full overflow-y-auto shadow-2xl" style={{ animation: 'slideIn 0.3s ease forwards' }}>
+          <div className="relative w-full max-w-sm bg-white h-full overflow-y-auto shadow-2xl" style={{ animation: 'slideIn 0.3s ease forwards' }}>
             <div className="p-5 border-b border-gray-100 flex items-center justify-between bg-navy">
               <img
                 src="https://millinoxx.com/img/logo.png"

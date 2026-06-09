@@ -319,8 +319,8 @@ export default function MillinoxxVoiceAI() {
 
   return (
     <>
-      {/* Floating Button — RIGHT side, above the chatbot (bottom: 100px so it sits above the chat button at bottom: 24px) */}
-      <div className="fixed z-[9999] flex flex-col items-end gap-3" style={{ bottom: '100px', right: '24px' }}>
+      {/* Floating Button — RIGHT side, above the chatbot (bottom: 90px so it sits above the chat button) */}
+      <div className="fixed z-[99999] flex flex-col items-end gap-3 right-4 sm:right-6" style={{ bottom: '90px' }}>
         <AnimatePresence>
           {!open && showPulse && (
             <motion.div
@@ -355,12 +355,14 @@ export default function MillinoxxVoiceAI() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: 'spring', stiffness: 300, damping: 28 }}
-            className="fixed z-[9998] rounded-3xl shadow-2xl overflow-hidden"
+            className="fixed z-[99999] rounded-3xl shadow-2xl overflow-hidden"
             style={{
-              bottom: '170px', right: '24px',
-              width: '340px',
+              bottom: '160px', right: '16px',
+              width: 'calc(100vw - 32px)', maxWidth: '340px',
+              maxHeight: 'calc(100vh - 180px)',
               background: 'linear-gradient(160deg, #0A1628 0%, #0D1F3C 60%, #13244A 100%)',
               border: '1px solid rgba(201,168,76,0.3)',
+              display: 'flex', flexDirection: 'column'
             }}
           >
             {/* Header */}
@@ -427,7 +429,7 @@ export default function MillinoxxVoiceAI() {
             </div>
 
             {/* Transcript & Response */}
-            <div className="px-5 pb-5 space-y-3">
+            <div className="px-5 pb-5 space-y-3 flex-1 overflow-y-auto">
               <AnimatePresence mode="wait">
                 {transcript && (
                   <motion.div key="t" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}

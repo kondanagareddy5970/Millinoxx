@@ -2,7 +2,11 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import HeroSlider from '../components/HeroSlider'
 import StatsCounter from '../components/StatsCounter'
-import { ArrowRight, CheckCircle } from 'lucide-react'
+import {
+  ArrowRight, CheckCircle,
+  Monitor, ShieldCheck, BrainCircuit, Zap, Fuel, Factory,
+  Cog, Building2, Hammer, Car, Ship, HeartPulse
+} from 'lucide-react'
 
 // Import slider images
 import heroRefinery from '../assets/hero-refinery-bright.jpg'
@@ -80,25 +84,31 @@ const heroSlides = [
 ]
 
 const services = [
-  { title: 'International Recruitment Services', image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&q=80', path: '/services/international-recruitment', desc: 'Global talent acquisition across continents.' },
-  { title: 'Indian Recruitment Services', image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80', path: '/services/indian-recruitment', desc: 'Domestic placements across all sectors.' },
-  { title: 'Shutdown & Turnaround Maintenance', image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&q=80', path: '/services/shutdown-maintenance', desc: 'Specialized technical manpower for shutdowns.' },
-  { title: 'Deputation / Manpower Outsourcing', image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80', path: '/services/deputation-outsourcing', desc: 'Flexible staffing & consulting solutions.' },
-  { title: 'Information Technology Services', image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80', path: '/services/it-services', desc: 'IT staffing, DevOps, cloud & digital transformation.' },
+  { title: 'Artificial Intelligence Solutions', image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80', path: '/services/ai-solutions', desc: 'Custom enterprise AI models and intelligent systems.' },
+  { title: 'AI Automation & Intelligent Agents', image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80', path: '/services/ai-automation', desc: 'AI agents managing workflows and robotic process automation.' },
+  { title: 'Machine Learning & Predictive Analytics', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80', path: '/services/machine-learning', desc: 'Predictive models, machine learning algorithms, and analytics.' },
+  { title: 'Information Technology Services', image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80', path: '/services/it-services', desc: 'Modern software development, cloud infrastructure & enterprise systems.' },
+  { title: 'Generative AI & LLM Development', image: 'https://images.unsplash.com/photo-1678911820864-e2c567c655d7?w=800&q=80', path: '/services/gen-ai', desc: 'Large language models and AI-generated content systems.' },
+  { title: 'Cloud & DevOps Engineering', image: '/cloud-devops.png', path: '/services/cloud-devops', desc: 'Cloud architecture, Kubernetes, and CI/CD pipelines.' },
+  { title: 'Cyber Security Solutions', image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80', path: '/services/cyber-security', desc: 'Security operations, threat monitoring, and network protection.' },
+  { title: 'Data Engineering & Business Intelligence', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80', path: '/services/data-engineering', desc: 'Big data pipelines, data lakes, and real-time intelligence.' },
 ]
 
 const industries = [
-  { label: 'Heavy Equipment & Engineering', icon: '🏗️', path: '/industries/heavy-equipment' },
-  { label: 'Power & Energy', icon: '⚡', path: '/industries/power-plant' },
-  { label: 'Oil & Gas', icon: '🛢️', path: '/industries/oil-gas' },
-  { label: 'MEP (Mechanical, Electrical, Plumbing)', icon: '🔧', path: '/industries/mep' },
-  { label: 'Construction Industry', icon: '🏛️', path: '/industries/construction' },
-  { label: 'Manufacturing', icon: '🏭', path: '/industries/manufacturing' },
-  { label: 'Shipping', icon: '⚓', path: '/industries/shipping' },
-  { label: 'Automotive', icon: '🚗', path: '/industries/automotive' },
-  { label: 'Cyber Security', icon: '🛡️', path: '/industries/cyber-security' },
-  { label: 'Information Technology', icon: '💻', path: '/industries/it-telecom' },
-  { label: 'Finance', icon: '💰', path: '/industries/banking-finance' },
+  // Row 1 – Technology-focused
+  { label: 'Information Technology',           icon: Monitor,      path: '/industries/it-telecom' },
+  { label: 'Cyber Security',                   icon: ShieldCheck,  path: '/industries/cyber-security' },
+  { label: 'Artificial Intelligence & ML',     icon: BrainCircuit, path: '/services/ai-solutions' },
+  { label: 'Power & Energy',                   icon: Zap,          path: '/industries/power-plant' },
+  { label: 'Oil & Gas',                        icon: Fuel,         path: '/industries/oil-gas' },
+  { label: 'Manufacturing',                    icon: Factory,      path: '/industries/manufacturing' },
+  // Row 2 – Industry-focused
+  { label: 'Heavy Equipment & Engineering',    icon: Cog,          path: '/industries/heavy-equipment' },
+  { label: 'Construction Industry',            icon: Building2,    path: '/industries/construction' },
+  { label: 'MEP (Mechanical, Electrical & Plumbing)', icon: Hammer, path: '/industries/mep' },
+  { label: 'Automotive',                       icon: Car,          path: '/industries/automotive' },
+  { label: 'Shipping & Logistics',             icon: Ship,         path: '/industries/shipping' },
+  { label: 'MedTech / Healthcare Technology',  icon: HeartPulse,   path: '/industries/healthcare' },
 ]
 
 const fadeInUp = { initial: { opacity: 0, y: 40 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 0.7 } }
@@ -117,23 +127,25 @@ export default function Home() {
             <h2 className="section-title">Our Services</h2>
             <div className="w-16 h-0.5 bg-gold mx-auto mt-4" />
           </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((s, i) => (
               <motion.div key={s.path}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}>
-                <Link to={s.path} className="group block bg-white rounded-card shadow-card overflow-hidden card-hover h-full">
-                  <div className="h-44 overflow-hidden">
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="h-full"
+              >
+                <Link to={s.path} className="group flex flex-col bg-white rounded-card shadow-card overflow-hidden card-hover h-full">
+                  <div className="h-40 overflow-hidden shrink-0">
                     <img src={s.image} alt={s.title} loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                   </div>
-                  <div className="p-5">
-                    <div className="w-8 h-0.5 bg-gold mb-3" />
-                    <h3 className="font-heading text-base font-semibold text-navy mb-2 leading-snug group-hover:text-gold transition-colors">{s.title}</h3>
-                    <p className="text-muted text-xs leading-relaxed">{s.desc}</p>
-                    <div className="mt-3 text-gold text-xs font-semibold flex items-center gap-1">Learn More <ArrowRight size={12} /></div>
+                  <div className="p-6 flex flex-col flex-grow">
+                    <div className="w-8 h-0.5 bg-gold mb-4 shrink-0" />
+                    <h3 className="font-heading text-lg font-semibold text-navy mb-3 leading-snug group-hover:text-gold transition-colors">{s.title}</h3>
+                    <p className="text-muted text-sm leading-relaxed flex-grow">{s.desc}</p>
+                    <div className="mt-4 text-gold text-sm font-semibold flex items-center gap-1 shrink-0">Learn More <ArrowRight size={14} /></div>
                   </div>
                 </Link>
               </motion.div>
@@ -167,30 +179,46 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Industries Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
+      {/* Industries We Serve – 2-Row 6-Column Grid */}
+      <section className="py-20 bg-lightbg relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, #C9A84C 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          {/* Section Header */}
           <motion.div {...fadeInUp} className="text-center mb-14">
             <span className="text-gold text-sm font-semibold tracking-[0.25em] uppercase block mb-3">Sectors We Cover</span>
             <h2 className="section-title">Industries We Serve</h2>
             <div className="w-16 h-0.5 bg-gold mx-auto mt-4" />
           </motion.div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-10">
+
+          {/* 12-Card Grid: 6 per row on desktop, 3 on tablet, 2 on mobile */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
             {industries.map((ind, i) => (
-              <motion.div key={ind.path}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+              <motion.div
+                key={ind.path}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.06 }}>
-                <Link to={ind.path} className="industry-icon-card group">
-                  <div className="text-4xl mb-3 group-hover:scale-110 transition-transform duration-300">{ind.icon}</div>
-                  <div className="text-navy text-xs font-semibold text-center leading-snug group-hover:text-gold transition-colors">{ind.label}</div>
+                transition={{ duration: 0.45, delay: i * 0.06 }}
+              >
+                <Link
+                  to={ind.path}
+                  className="group flex flex-col items-center justify-center p-5 bg-white rounded-xl shadow-sm hover:shadow-xl border border-transparent hover:border-gold/30 transition-all duration-300 hover:-translate-y-1 h-full min-h-[140px]"
+                >
+                  <div className="w-14 h-14 rounded-full bg-lightbg group-hover:bg-gold/10 flex items-center justify-center transition-colors duration-300 mb-3 shrink-0">
+                    <ind.icon size={26} className="text-navy group-hover:text-gold transition-colors duration-300" />
+                  </div>
+                  <span className="text-navy text-xs font-semibold text-center leading-snug group-hover:text-gold transition-colors duration-300">
+                    {ind.label}
+                  </span>
                 </Link>
               </motion.div>
             ))}
           </div>
-          <div className="text-center">
-            <Link to="/industries/heavy-equipment" className="btn-gold inline-flex items-center gap-2">
+
+          {/* CTA */}
+          <div className="text-center mt-12">
+            <Link to="/industries/heavy-equipment" className="btn-gold inline-flex items-center gap-2 shadow-md hover:shadow-lg transition-shadow">
               EXPLORE ALL INDUSTRIES <ArrowRight size={16} />
             </Link>
           </div>
