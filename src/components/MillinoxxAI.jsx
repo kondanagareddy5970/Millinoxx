@@ -342,7 +342,7 @@ export default function MillinoxxAI() {
   return (
     <>
       {/* Floating Button — bottom-right */}
-      <div className="fixed bottom-6 right-6 z-[9999] flex flex-col items-end gap-3">
+      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[99999] flex flex-col items-end gap-3">
         <AnimatePresence>
           {!open && showPulse && (
             <motion.div
@@ -378,11 +378,11 @@ export default function MillinoxxAI() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 40, scale: 0.95 }}
             transition={{ type: 'spring', stiffness: 300, damping: 28 }}
-            className="fixed z-[9998] flex flex-col rounded-2xl shadow-2xl overflow-hidden border border-gray-200"
+            className="fixed z-[99999] flex flex-col rounded-2xl shadow-2xl overflow-hidden border border-gray-200"
             style={{
-              bottom: '100px', right: '24px',
-              width: '390px',
-              maxHeight: minimized ? '64px' : '600px',
+              bottom: '90px', right: '16px',
+              width: 'calc(100vw - 32px)', maxWidth: '390px',
+              maxHeight: minimized ? '64px' : 'calc(100vh - 110px)',
               transition: 'max-height 0.35s cubic-bezier(0.4,0,0.2,1)',
               background: '#fff',
             }}

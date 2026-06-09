@@ -7,8 +7,24 @@ const fadeInUp = { initial: { opacity: 0, y: 40 }, whileInView: { opacity: 1, y:
 
 const offices = [
   {
+    city: 'Russia Office',
+    badge: 'Global Headquarters',
+    badgeStyle: 'bg-gold/20 text-gold',
+    company: 'Millinoxx Engineering & Consultancy',
+    address: '105005, Moscow, St. Baumanskaya, 7, Bldg. 1, Room 22/1',
+    pin: '105005',
+    phone: '',
+    email: 'info@millinoxx.ru',
+  },
+  {
     city: 'Hyderabad Office',
+<<<<<<< HEAD
     company: 'Millinoxx Engineering & Technology Pvt. Ltd.',
+=======
+    badge: 'India Operations',
+    badgeStyle: 'bg-navy text-white/70 border border-white/20',
+    company: 'Millinoxx Engineering & Consultancy Pvt. Ltd.',
+>>>>>>> tinku1
     address: '4th Floor, AWFIS Sarvatham, Plot No 12, Deloitte Dr, Phase 2, HITEC City, Hyderabad, Telangana, India',
     pin: '500081',
     phone: '+91 9959450031',
@@ -16,7 +32,13 @@ const offices = [
   },
   {
     city: 'Visakhapatnam Office',
+<<<<<<< HEAD
     company: 'Millinoxx Engineering & Technology Pvt. Ltd.',
+=======
+    badge: 'India Operations',
+    badgeStyle: 'bg-navy text-white/70 border border-white/20',
+    company: 'Millinoxx Engineering & Consultancy Pvt. Ltd.',
+>>>>>>> tinku1
     address: 'Plot No: 66-2-48/1, Sri Ram Nagar, Road No: 2, Coramandal Gate, PO: Malkapuram, Visakhapatnam, Andhra Pradesh, India',
     pin: '530011',
     phone: '+91 9959001731',
@@ -139,22 +161,30 @@ export default function Contact() {
               transition={{ duration: 0.7 }}
               className="lg:col-span-2 space-y-6">
               {offices.map((office, i) => (
-                <div key={i} className="bg-lightbg rounded-card p-7 border border-gray-100">
-                  <div className="flex items-center gap-2 mb-5">
-                    <div className="w-8 h-8 rounded-full bg-gold flex items-center justify-center flex-shrink-0">
-                      <MapPin size={14} className="text-navy" />
-                    </div>
-                    <h3 className="font-heading text-lg font-bold text-navy">{office.city}</h3>
+                <div key={i} className={`rounded-card p-7 border ${i === 0 ? 'bg-navy border-gold/30' : 'bg-lightbg border-gray-100'}`}>
+                  {/* Badge */}
+                  <div className="mb-3">
+                    <span className={`text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded ${i === 0 ? 'bg-gold text-navy' : 'bg-gray-200 text-gray-500'}`}>
+                      {office.badge}
+                    </span>
                   </div>
-                  <p className="text-sm font-semibold text-navy mb-1">{office.company}</p>
-                  <p className="text-muted text-sm mb-1 leading-relaxed">{office.address}</p>
-                  <p className="text-muted text-sm mb-4">Pin Code: {office.pin}</p>
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${i === 0 ? 'bg-gold/20' : 'bg-gold'}`}>
+                      <MapPin size={14} className={i === 0 ? 'text-gold' : 'text-navy'} />
+                    </div>
+                    <h3 className={`font-heading text-lg font-bold ${i === 0 ? 'text-white' : 'text-navy'}`}>{office.city}</h3>
+                  </div>
+                  <p className={`text-sm font-semibold mb-1 ${i === 0 ? 'text-white/80' : 'text-navy'}`}>{office.company}</p>
+                  <p className={`text-sm mb-1 leading-relaxed ${i === 0 ? 'text-white/60' : 'text-muted'}`}>{office.address}</p>
+                  <p className={`text-sm mb-4 ${i === 0 ? 'text-white/60' : 'text-muted'}`}>Pin Code: {office.pin}</p>
                   <div className="space-y-2.5">
-                    <a href={`tel:${office.phone.replace(/\s/g, '')}`} className="flex items-center gap-3 text-sm text-navy hover:text-gold transition-colors">
-                      <Phone size={15} className="text-gold flex-shrink-0" />
-                      {office.phone}
-                    </a>
-                    <a href={`mailto:${office.email}`} className="flex items-center gap-3 text-sm text-navy hover:text-gold transition-colors">
+                    {office.phone && (
+                      <a href={`tel:${office.phone.replace(/\s/g, '')}`} className={`flex items-center gap-3 text-sm transition-colors hover:text-gold ${i === 0 ? 'text-white/70' : 'text-navy'}`}>
+                        <Phone size={15} className="text-gold flex-shrink-0" />
+                        {office.phone}
+                      </a>
+                    )}
+                    <a href={`mailto:${office.email}`} className={`flex items-center gap-3 text-sm transition-colors hover:text-gold ${i === 0 ? 'text-white/70' : 'text-navy'}`}>
                       <Mail size={15} className="text-gold flex-shrink-0" />
                       {office.email}
                     </a>
@@ -182,7 +212,7 @@ export default function Contact() {
           <motion.div {...fadeInUp} className="mt-16 rounded-card overflow-hidden shadow-card border border-gray-100">
             <div className="bg-navy px-6 py-4 flex items-center gap-3">
               <MapPin size={18} className="text-gold" />
-              <span className="text-white font-semibold text-sm">Our Location — HITEC City, Hyderabad, India</span>
+              <span className="text-white font-semibold text-sm">India Operations — HITEC City, Hyderabad, India</span>
             </div>
             <iframe
               title="Millinoxx HITEC City Location"
