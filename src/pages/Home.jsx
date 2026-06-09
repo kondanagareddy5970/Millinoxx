@@ -8,6 +8,8 @@ import { ArrowRight, CheckCircle } from 'lucide-react'
 import heroRefinery from '../assets/hero-refinery-bright.jpg'
 import heroFuturisticRefinery from '../assets/hero-futuristic-refinery.png'
 import heroGlobalRecruitment from '../assets/hero-global-recruitment.png'
+import heroITServices from '../assets/hero-it-services.png'
+import heroCyberSecurity from '../assets/hero-cyber-security.png'
 
 const heroSlides = [
   {
@@ -72,6 +74,46 @@ const heroSlides = [
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.65 }}>
           <Link to="/contact" className="btn-gold inline-flex items-center gap-2">
             Get In Touch <ArrowRight size={16} />
+          </Link>
+        </motion.div>
+      </div>
+    )
+  },
+  {
+    image: heroITServices,
+    content: (
+      <div className="max-w-2xl">
+        <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
+          className="font-heading text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+          Cutting-Edge Information Technology Services
+        </motion.h1>
+        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
+          className="text-white/80 text-lg mb-8">
+          Empowering your business with IT staffing, cloud services, software development, and digital transformation.
+        </motion.p>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.65 }}>
+          <Link to="/services/it-services" className="btn-gold inline-flex items-center gap-2">
+            Explore IT Services <ArrowRight size={16} />
+          </Link>
+        </motion.div>
+      </div>
+    )
+  },
+  {
+    image: heroCyberSecurity,
+    content: (
+      <div className="max-w-2xl">
+        <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
+          className="font-heading text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+          Robust Enterprise Cybersecurity Solutions
+        </motion.h1>
+        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
+          className="text-white/80 text-lg mb-8">
+          Protecting your critical digital assets, networks, and data infrastructure against global cyber threats.
+        </motion.p>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.65 }}>
+          <Link to="/industries/cyber-security" className="btn-gold inline-flex items-center gap-2">
+            Explore Cyber Security <ArrowRight size={16} />
           </Link>
         </motion.div>
       </div>

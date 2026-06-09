@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { MapPin, Phone, Mail, Globe } from 'lucide-react'
 import { FaFacebookF, FaLinkedinIn } from 'react-icons/fa'
+import logoImg from '../assets/logo.png'
 
 const quickLinks = [
   { label: 'Home', path: '/' },
@@ -26,16 +27,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Column 1 - Brand */}
           <div>
-            <div className="mb-5">
-              <img src="https://millinoxx.com/img/logo.png" alt="Millinoxx" className="h-14 w-auto mb-4"
-                onError={e => { e.target.style.display='none'; e.target.nextSibling.style.display='block' }} />
-              <div>
-                <div className="font-heading text-2xl font-bold text-gold mb-1">Millinoxx</div>
-                <div className="text-white/70 text-xs tracking-widest uppercase">Engineering & Consultancy</div>
-              </div>
+            <div className="mb-5 flex items-center">
+              <img src={logoImg} alt="Millinoxx Engineering & Technology" className="h-14 w-auto object-contain" />
             </div>
             <p className="text-white/60 text-sm leading-relaxed mb-6">
-              Connecting Global Talent with World-Class Opportunities. Your trusted partner in international recruitment and engineering consultancy.
+              Connecting Global Talent with World-Class Opportunities. Your trusted partner in international recruitment and engineering technology.
             </p>
             <div className="flex gap-3">
               <a href="https://www.facebook.com/people/Millinoxx-Pvt-Ltd/61579129431567/" target="_blank" rel="noopener noreferrer"
@@ -106,7 +102,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-3">
           <p className="text-white/40 text-sm text-center">
-            © 2025 Millinoxx Engineering & Consultancy Pvt. Ltd. | All Rights Reserved
+            © 2025 Millinoxx Engineering & Technology Pvt. Ltd. | All Rights Reserved
           </p>
           <p className="text-white/40 text-xs">
             Designed with excellence for global reach

@@ -14,7 +14,7 @@ function getVoiceResponse(transcript) {
 
   // Greeting
   if (t.match(/^(hi|hello|hey|good\s*(morning|afternoon|evening)|namaste|start|help)/)) {
-    return `Welcome to Millinoxx Engineering and Consultancy! I'm Millinoxx Voice AI. I can help you with information about our services, industries, contact details, company profile, and much more. Just ask me anything!`
+    return `Welcome to Millinoxx Engineering and Technology! I'm Millinoxx Voice AI. I can help you with information about our services, industries, contact details, company profile, and much more. Just ask me anything!`
   }
 
   // All services
@@ -54,12 +54,12 @@ function getVoiceResponse(transcript) {
 
   // CEO
   if (t.match(/ceo|founder|srinivasu|leader|director/)) {
-    return `Millinoxx was founded by Srinivasu, our Founder and CEO, whose vision has driven the company to become a premier global recruitment consultancy. Srinivasu says — At Millinoxx Experts, our mission is simple yet powerful: to make a meaningful and lasting impact on your staffing strategies. Under his leadership, Millinoxx has completed 5000 plus placements across 25 plus countries in over 10 years of excellence.`
+    return `Millinoxx was founded by Srinivasu, our Founder and CEO, whose vision has driven the company to become a premier global recruitment technology partner. Srinivasu says — At Millinoxx Experts, our mission is simple yet powerful: to make a meaningful and lasting impact on your staffing strategies. Under his leadership, Millinoxx has completed 5000 plus placements across 25 plus countries in over 10 years of excellence.`
   }
 
   // Company Profile / About
   if (t.match(/company.?profile|about.*millinoxx|who.*are|background|founded|history|established/)) {
-    return `Millinoxx Engineering and Consultancy Private Limited is a premier international recruitment, manpower outsourcing, and engineering consultancy firm headquartered in HITEC City, Hyderabad, India. With over 10 years of excellence, we have completed 5000 plus successful placements across 25 plus countries, serving clients in the Gulf, Europe, UK, USA, and Asia. Our mission is to redefine recruitment by making top-tier global talent accessible to organizations worldwide through integrity, innovation, and deep industry understanding.`
+    return `Millinoxx Engineering and Technology Private Limited is a premier international recruitment, manpower outsourcing, and engineering technology firm headquartered in HITEC City, Hyderabad, India. With over 10 years of excellence, we have completed 5000 plus successful placements across 25 plus countries, serving clients in the Gulf, Europe, UK, USA, and Asia. Our mission is to redefine recruitment by making top-tier global talent accessible to organizations worldwide through integrity, innovation, and deep industry understanding.`
   }
 
   // Tech Partner
@@ -278,7 +278,7 @@ export default function MillinoxxVoiceAI() {
     setOpen(true)
     setShowPulse(false)
     window.dispatchEvent(new CustomEvent('close-chatbot'));
-    const welcome = `Welcome to Millinoxx Engineering and Consultancy! I'm Millinoxx Voice AI. Ask me anything about our international recruitment services, the 16 industries we serve, our contact information, or our company profile. I'm here to help!`
+    const welcome = `Welcome to Millinoxx Engineering and Technology! I'm Millinoxx Voice AI. Ask me anything about our international recruitment services, the 16 industries we serve, our contact information, or our company profile. I'm here to help!`
     setResponse(welcome)
     setTimeout(() => speak(welcome), 500)
   }

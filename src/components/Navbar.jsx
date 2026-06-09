@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X, ChevronDown } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { FaFacebookF, FaLinkedinIn } from 'react-icons/fa'
+import logoImg from '../assets/logo.jpeg'
 
 const navLinks = [
-  { label: 'Home', path: '/' },
   {
     label: 'About Us',
     dropdown: [
@@ -54,23 +54,14 @@ const navLinks = [
       { label: 'Tech Gallery', path: '/gallery/tech' },
     ],
   },
-  { label: 'Contact', path: '/contact' },
 ]
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState(null)
   const [mobileExpanded, setMobileExpanded] = useState(null)
   const location = useLocation()
   const navRef = useRef(null)
-
-  // Scroll detection
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 80)
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
   // Close everything on route change
   useEffect(() => {
@@ -93,77 +84,28 @@ export default function Navbar() {
   const isActive = (path) => location.pathname === path
   const isParentActive = (dropdown) => dropdown?.some(d => location.pathname === d.path)
 
-  const toggleDropdown = (label) => {
-    setActiveDropdown(prev => (prev === label ? null : label))
-  }
-
   return (
     <>
       {/* Fixed wrapper */}
       <div ref={navRef} className="fixed top-0 left-0 right-0 z-50">
-
-        {/* Top announcement + social + translate bar */}
-        <div className={`transition-all duration-300 ${scrolled ? 'hidden' : 'block'} bg-navy/95 backdrop-blur-sm py-1.5 px-6`}>
-          <div className="max-w-7xl mx-auto flex items-center justify-between">
-            <span className="text-gold text-xs font-medium tracking-widest uppercase hidden sm:block">
-              Connecting Global Talent with World-Class Opportunities
-            </span>
-            <div className="flex items-center gap-3 ml-auto">
-              {/* Google Translate */}
-              <div id="google_translate_element" />
-              {/* Social icons */}
-              <div className="flex items-center gap-2">
-                <a href="https://www.facebook.com/people/Millinoxx-Pvt-Ltd/61579129431567/" target="_blank" rel="noopener noreferrer"
-                  className="w-7 h-7 rounded bg-white hover:bg-gold flex items-center justify-center transition-colors duration-200">
-                  <FaFacebookF size={12} className="text-navy" />
-                </a>
-                <a href="https://www.linkedin.com/company/millinoxxprivatelimited/" target="_blank" rel="noopener noreferrer"
-                  className="w-7 h-7 rounded bg-white hover:bg-gold flex items-center justify-center transition-colors duration-200">
-                  <FaLinkedinIn size={12} className="text-navy" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
         {/* Main Navbar */}
-        <nav className={`transition-all duration-300 ${scrolled ? 'bg-white shadow-lg py-3' : 'bg-transparent py-4'}`}>
+        <nav className="bg-[#004b75] border-b border-white/10 py-3.5 shadow-lg">
           <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3 flex-shrink-0">
-              <img
-                src="https://millinoxx.com/img/logo.png"
-                alt="Millinoxx Logo"
-                className="h-12 w-auto object-contain"
-                onError={e => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex' }}
-              />
-              <div style={{ display: 'none' }} className="items-center gap-2">
-                <div className="w-10 h-10 bg-gold rounded-full flex items-center justify-center">
-                  <span className="text-navy font-heading font-bold text-lg">M</span>
-                </div>
-                <div>
-                  <div className={`font-heading font-bold text-xl ${scrolled ? 'text-navy' : 'text-white'}`}>Millinoxx</div>
-                  <div className={`text-xs font-medium tracking-wider ${scrolled ? 'text-muted' : 'text-white/80'}`}>ENGINEERING & CONSULTANCY</div>
-                </div>
-              </div>
+            <Link to="/" className="flex items-center flex-shrink-0 group">
+              <img src={logoImg} alt="Millinoxx Engineering & Technology" className="h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-300" />
             </Link>
 
             {/* Desktop Nav */}
-            <div className="hidden lg:flex items-center gap-1">
+            <div className="hidden lg:flex items-center gap-5">
               {navLinks.map((link) =>
                 link.dropdown ? (
                   <div key={link.label} className="relative group py-2">
                     <button
-                      className={`flex items-center gap-1 px-3 py-1 rounded text-sm font-medium transition-colors duration-200
-                        ${isParentActive(link.dropdown)
-                          ? 'text-gold'
-                          : scrolled ? 'text-navy hover:text-gold' : 'text-white hover:text-gold'}`}
+                      className={`flex items-center gap-1 px-2.5 py-1 text-sm font-medium transition-colors duration-200 hover:text-gold
+                        ${isParentActive(link.dropdown) ? 'text-gold' : 'text-white'}`}
                     >
                       {link.label}
-                      <ChevronDown
-                        size={14}
-                        className="transition-transform duration-200 group-hover:rotate-180"
-                      />
                     </button>
 
                     {/* Dropdown panel */}
@@ -189,28 +131,48 @@ export default function Navbar() {
                   <Link
                     key={link.path}
                     to={link.path}
-                    className={`px-3 py-2 rounded text-sm font-medium transition-colors duration-200
-                      ${isActive(link.path)
-                        ? 'text-gold'
-                        : scrolled ? 'text-navy hover:text-gold' : 'text-white hover:text-gold'}`}
+                    className={`px-2.5 py-2 text-sm font-medium transition-colors duration-200 hover:text-gold
+                      ${isActive(link.path) ? 'text-gold' : 'text-white'}`}
                   >
                     {link.label}
                   </Link>
                 )
               )}
-              <Link to="/contact" className="ml-3 bg-gold hover:bg-yellow-500 text-navy text-sm font-semibold px-5 py-2 rounded-sm transition-all duration-200 shadow-md hover:shadow-lg">
+
+              <Link to="/contact" className="ml-3 bg-gold hover:bg-yellow-500 text-navy text-xs font-bold px-4 py-2 rounded-sm transition-all duration-200 shadow-md hover:shadow-lg whitespace-nowrap">
                 Get In Touch
               </Link>
+
+              {/* Translate Element */}
+              <div className="ml-2 flex items-center">
+                <div id="google_translate_element" className="scale-90 origin-right" />
+              </div>
+
+              {/* Social links */}
+              <div className="flex items-center gap-2 ml-3 border-l border-white/20 pl-4">
+                <a href="https://www.facebook.com/people/Millinoxx-Pvt-Ltd/61579129431567/" target="_blank" rel="noopener noreferrer"
+                  className="w-7 h-7 rounded bg-white hover:bg-gold flex items-center justify-center transition-colors duration-200">
+                  <FaFacebookF size={12} className="text-[#004b75]" />
+                </a>
+                <a href="https://www.linkedin.com/company/millinoxxprivatelimited/" target="_blank" rel="noopener noreferrer"
+                  className="w-7 h-7 rounded bg-white hover:bg-gold flex items-center justify-center transition-colors duration-200">
+                  <FaLinkedinIn size={12} className="text-[#004b75]" />
+                </a>
+              </div>
             </div>
 
             {/* Mobile Hamburger */}
-            <button
-              onClick={() => setMobileOpen(true)}
-              className="lg:hidden p-2"
-              aria-label="Open menu"
-            >
-              <Menu size={26} className={scrolled ? 'text-navy' : 'text-white'} />
-            </button>
+            {/* Mobile Actions */}
+            <div className="flex lg:hidden items-center gap-2">
+              <div id="google_translate_element_mobile" className="scale-75 origin-right" />
+              <button
+                onClick={() => setMobileOpen(true)}
+                className="p-2 text-white hover:text-gold transition-colors"
+                aria-label="Open menu"
+              >
+                <Menu size={26} />
+              </button>
+            </div>
           </div>
         </nav>
       </div>
@@ -220,19 +182,23 @@ export default function Navbar() {
         <div className="fixed inset-0 z-[200] flex">
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
           <div className="relative w-80 max-w-[85vw] bg-white h-full overflow-y-auto shadow-2xl" style={{ animation: 'slideIn 0.3s ease forwards' }}>
-            <div className="p-5 border-b border-gray-100 flex items-center justify-between bg-navy">
-              <img
-                src="https://millinoxx.com/img/logo.png"
-                alt="Millinoxx"
-                className="h-10 w-auto"
-                style={{ filter: 'brightness(0) invert(1)' }}
-                onError={e => { e.target.style.display = 'none' }}
-              />
+            <div className="p-5 border-b border-gray-100 flex items-center justify-between bg-[#004b75]">
+              <div className="flex items-center text-white">
+                <img src={logoImg} alt="Millinoxx Logo" className="h-8 w-auto object-contain" />
+              </div>
               <button onClick={() => setMobileOpen(false)}>
                 <X size={22} className="text-white" />
               </button>
             </div>
             <nav className="p-4">
+              <Link
+                to="/"
+                onClick={() => setMobileOpen(false)}
+                className={`block px-4 py-3 rounded-lg text-sm font-semibold mb-1
+                  ${isActive('/') ? 'text-yellow-700 bg-amber-50' : 'text-navy hover:bg-gray-50'}`}
+              >
+                Home
+              </Link>
               {navLinks.map((link) =>
                 link.dropdown ? (
                   <div key={link.label}>
@@ -242,7 +208,6 @@ export default function Navbar() {
                         ${isParentActive(link.dropdown) ? 'text-yellow-700 bg-amber-50' : 'text-navy hover:bg-gray-50'}`}
                     >
                       {link.label}
-                      <ChevronDown size={16} className={`transition-transform ${mobileExpanded === link.label ? 'rotate-180' : ''}`} />
                     </button>
                     {mobileExpanded === link.label && (
                       <div className="ml-4 mb-2 border-l-2 border-gold pl-3">
@@ -271,16 +236,22 @@ export default function Navbar() {
                   </Link>
                 )
               )}
-              <Link to="/contact" onClick={() => setMobileOpen(false)} className="mt-4 block text-center bg-gold text-navy font-bold px-6 py-3 rounded-sm">
+
+              <Link
+                to="/contact"
+                onClick={() => setMobileOpen(false)}
+                className="mt-4 block text-center bg-gold text-navy font-bold px-6 py-3 rounded-sm transition-all duration-200 hover:bg-yellow-500 shadow-md"
+              >
                 Get In Touch
               </Link>
+
               <div className="mt-6 flex justify-center gap-4">
                 <a href="https://www.facebook.com/people/Millinoxx-Pvt-Ltd/61579129431567/" target="_blank" rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-navy flex items-center justify-center">
+                  className="w-10 h-10 rounded-full bg-[#004b75] flex items-center justify-center">
                   <FaFacebookF size={14} className="text-white" />
                 </a>
                 <a href="https://www.linkedin.com/company/millinoxxprivatelimited/" target="_blank" rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-navy flex items-center justify-center">
+                  className="w-10 h-10 rounded-full bg-[#004b75] flex items-center justify-center">
                   <FaLinkedinIn size={14} className="text-white" />
                 </a>
               </div>

@@ -8,7 +8,7 @@ const fadeInUp = { initial: { opacity: 0, y: 40 }, whileInView: { opacity: 1, y:
 const offices = [
   {
     city: 'Hyderabad Office',
-    company: 'Millinoxx Engineering & Consultancy Pvt. Ltd.',
+    company: 'Millinoxx Engineering & Technology Pvt. Ltd.',
     address: '4th Floor, AWFIS Sarvatham, Plot No 12, Deloitte Dr, Phase 2, HITEC City, Hyderabad, Telangana, India',
     pin: '500081',
     phone: '+91 9959450031',
@@ -16,7 +16,7 @@ const offices = [
   },
   {
     city: 'Visakhapatnam Office',
-    company: 'Millinoxx Engineering & Consultancy Pvt. Ltd.',
+    company: 'Millinoxx Engineering & Technology Pvt. Ltd.',
     address: 'Plot No: 66-2-48/1, Sri Ram Nagar, Road No: 2, Coramandal Gate, PO: Malkapuram, Visakhapatnam, Andhra Pradesh, India',
     pin: '530011',
     phone: '+91 9959001731',

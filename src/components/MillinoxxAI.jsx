@@ -6,12 +6,12 @@ import industryData from '../data/industryData'
 // ─── FULL WEBSITE KNOWLEDGE BASE ───────────────────────────────────────────
 const KB = {
   company: {
-    name: 'Millinoxx Engineering & Consultancy Pvt. Ltd.',
+    name: 'Millinoxx Engineering & Technology Pvt. Ltd.',
     shortName: 'Millinoxx Experts',
     hq: 'HITEC City, Hyderabad, Telangana, India',
     founded: '10+ years of excellence',
     website: 'www.millinoxx.com',
-    summary: 'Premier international recruitment, manpower outsourcing & engineering consultancy firm headquartered in Hyderabad, India. We serve clients across the Gulf, Europe, UK, USA and Asia.',
+    summary: 'Premier international recruitment, manpower outsourcing & engineering technology firm headquartered in Hyderabad, India. We serve clients across the Gulf, Europe, UK, USA and Asia.',
     placements: '5000+ successful placements',
     countries: '25+ countries served',
     vision: 'To be the world\'s most trusted and innovative recruitment partner — recognized for integrity, excellence, and our ability to transform organizations through outstanding human capital solutions.',
@@ -107,7 +107,7 @@ function getResponse(msg) {
 
   // Greetings
   if (m.match(/^(hi|hello|hey|good\s*(morning|afternoon|evening)|namaste|howdy|greetings|start|help me)/)) {
-    return `Hello! 👋 Welcome to **Millinoxx Engineering & Consultancy Pvt. Ltd.**!\n\nI'm **Millinoxx AI**, your intelligent consultant. I can help you with:\n\n• 🌍 **Services** — International, Indian Recruitment, IT, Shutdown, Outsourcing\n• 🏭 **Industries** — 16 sectors including Oil & Gas, Healthcare, IT, Aviation\n• 📞 **Contact** — Office addresses, phone numbers, email\n• 🏢 **About Us** — Company profile, CEO message, values, tech partner\n• 🌟 **Testimonials** — Client success stories\n\nWhat would you like to know?`
+    return `Hello! 👋 Welcome to **Millinoxx Engineering & Technology Pvt. Ltd.**!\n\nI'm **Millinoxx AI**, your intelligent consultant. I can help you with:\n\n• 🌍 **Services** — International, Indian Recruitment, IT, Shutdown, Outsourcing\n• 🏭 **Industries** — 16 sectors including Oil & Gas, Healthcare, IT, Aviation\n• 📞 **Contact** — Office addresses, phone numbers, email\n• 🏢 **About Us** — Company profile, CEO message, values, tech partner\n• 🌟 **Testimonials** — Client success stories\n\nWhat would you like to know?`
   }
 
   // All Services overview
