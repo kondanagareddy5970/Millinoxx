@@ -184,13 +184,6 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="fixed inset-0 z-[200] flex">
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
-<<<<<<< HEAD
-          <div className="relative w-80 max-w-[85vw] bg-white h-full overflow-y-auto shadow-2xl" style={{ animation: 'slideIn 0.3s ease forwards' }}>
-            <div className="p-5 border-b border-gray-100 flex items-center justify-between bg-[#004b75]">
-              <div className="flex items-center text-white">
-                <img src={logoImg} alt="Millinoxx Logo" className="h-8 w-auto object-contain" />
-              </div>
-=======
           <div className="relative w-full max-w-sm bg-white h-full overflow-y-auto shadow-2xl" style={{ animation: 'slideIn 0.3s ease forwards' }}>
             <div className="p-5 border-b border-gray-100 flex items-center justify-between bg-navy">
               <img
@@ -200,7 +193,6 @@ export default function Navbar() {
                 style={{ filter: 'brightness(0) invert(1)' }}
                 onError={e => { e.target.style.display = 'none' }}
               />
->>>>>>> tinku1
               <button onClick={() => setMobileOpen(false)}>
                 <X size={22} className="text-white" />
               </button>
