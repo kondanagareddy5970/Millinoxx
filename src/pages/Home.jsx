@@ -7,7 +7,7 @@ import { ArrowRight, CheckCircle } from 'lucide-react'
 // Import slider images
 import heroRefinery from '../assets/hero-refinery-bright.jpg'
 import heroFuturisticRefinery from '../assets/hero-futuristic-refinery.png'
-import heroFuturisticPower from '../assets/hero-futuristic-power.png'
+import heroGlobalRecruitment from '../assets/hero-global-recruitment.png'
 
 const heroSlides = [
   {
@@ -58,7 +58,7 @@ const heroSlides = [
     )
   },
   {
-    image: heroFuturisticPower,
+    image: heroGlobalRecruitment,
     content: (
       <div className="max-w-2xl">
         <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
