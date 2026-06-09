@@ -18,13 +18,9 @@ const offices = [
   },
   {
     city: 'Hyderabad Office',
-<<<<<<< HEAD
-    company: 'Millinoxx Engineering & Technology Pvt. Ltd.',
-=======
     badge: 'India Operations',
     badgeStyle: 'bg-navy text-white/70 border border-white/20',
     company: 'Millinoxx Engineering & Consultancy Pvt. Ltd.',
->>>>>>> tinku1
     address: '4th Floor, AWFIS Sarvatham, Plot No 12, Deloitte Dr, Phase 2, HITEC City, Hyderabad, Telangana, India',
     pin: '500081',
     phone: '+91 9959450031',
@@ -32,13 +28,9 @@ const offices = [
   },
   {
     city: 'Visakhapatnam Office',
-<<<<<<< HEAD
-    company: 'Millinoxx Engineering & Technology Pvt. Ltd.',
-=======
     badge: 'India Operations',
     badgeStyle: 'bg-navy text-white/70 border border-white/20',
     company: 'Millinoxx Engineering & Consultancy Pvt. Ltd.',
->>>>>>> tinku1
     address: 'Plot No: 66-2-48/1, Sri Ram Nagar, Road No: 2, Coramandal Gate, PO: Malkapuram, Visakhapatnam, Andhra Pradesh, India',
     pin: '530011',
     phone: '+91 9959001731',
