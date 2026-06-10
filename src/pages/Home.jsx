@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom'
 import HeroSlider from '../components/HeroSlider'
 import StatsCounter from '../components/StatsCounter'
 import {
-  ArrowRight, CheckCircle,
-  Monitor, ShieldCheck, BrainCircuit, Zap, Fuel, Factory,
-  Cog, Building2, Hammer, Car, Ship, HeartPulse
+  ArrowRight, CheckCircle
 } from 'lucide-react'
+import { servicesData as services, industriesData as industries } from '../config/data'
 
 // Import slider images
 import heroRefinery from '../assets/hero-refinery-bright.jpg'
@@ -125,33 +124,7 @@ const heroSlides = [
   }
 ]
 
-const services = [
-  { title: 'Artificial Intelligence Solutions', image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80', path: '/services/ai-solutions', desc: 'Custom enterprise AI models and intelligent systems.' },
-  { title: 'AI Automation & Intelligent Agents', image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80', path: '/services/ai-automation', desc: 'AI agents managing workflows and robotic process automation.' },
-  { title: 'Machine Learning & Predictive Analytics', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80', path: '/services/machine-learning', desc: 'Predictive models, machine learning algorithms, and analytics.' },
-  { title: 'Information Technology Services', image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80', path: '/services/it-services', desc: 'Modern software development, cloud infrastructure & enterprise systems.' },
-  { title: 'Generative AI & LLM Development', image: 'https://images.unsplash.com/photo-1678911820864-e2c567c655d7?w=800&q=80', path: '/services/gen-ai', desc: 'Large language models and AI-generated content systems.' },
-  { title: 'Cloud & DevOps Engineering', image: '/cloud-devops.png', path: '/services/cloud-devops', desc: 'Cloud architecture, Kubernetes, and CI/CD pipelines.' },
-  { title: 'Cyber Security Solutions', image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80', path: '/services/cyber-security', desc: 'Security operations, threat monitoring, and network protection.' },
-  { title: 'Data Engineering & Business Intelligence', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80', path: '/services/data-engineering', desc: 'Big data pipelines, data lakes, and real-time intelligence.' },
-]
 
-const industries = [
-  // Row 1 – Technology-focused
-  { label: 'Information Technology',           icon: Monitor,      path: '/industries/it-telecom' },
-  { label: 'Cyber Security',                   icon: ShieldCheck,  path: '/industries/cyber-security' },
-  { label: 'Artificial Intelligence & ML',     icon: BrainCircuit, path: '/services/ai-solutions' },
-  { label: 'Power & Energy',                   icon: Zap,          path: '/industries/power-plant' },
-  { label: 'Oil & Gas',                        icon: Fuel,         path: '/industries/oil-gas' },
-  { label: 'Manufacturing',                    icon: Factory,      path: '/industries/manufacturing' },
-  // Row 2 – Industry-focused
-  { label: 'Heavy Equipment & Engineering',    icon: Cog,          path: '/industries/heavy-equipment' },
-  { label: 'Construction Industry',            icon: Building2,    path: '/industries/construction' },
-  { label: 'MEP (Mechanical, Electrical & Plumbing)', icon: Hammer, path: '/industries/mep' },
-  { label: 'Automotive',                       icon: Car,          path: '/industries/automotive' },
-  { label: 'Shipping & Logistics',             icon: Ship,         path: '/industries/shipping' },
-  { label: 'MedTech / Healthcare Technology',  icon: HeartPulse,   path: '/industries/healthcare' },
-]
 
 const fadeInUp = { initial: { opacity: 0, y: 40 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 0.7 } }
 
@@ -233,24 +206,30 @@ export default function Home() {
             <div className="w-16 h-0.5 bg-gold mx-auto mt-4" />
           </motion.div>
 
-          {/* 12-Card Grid: 6 per row on desktop, 3 on tablet, 2 on mobile */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
+          {/* Industry Grid: Responsive layout for 19 items */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5">
             {industries.map((ind, i) => (
               <motion.div
                 key={ind.path}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: i * 0.06 }}
+                transition={{ duration: 0.45, delay: (i % 6) * 0.06 }}
               >
                 <Link
                   to={ind.path}
-                  className="group flex flex-col items-center justify-center p-5 bg-white rounded-xl shadow-sm hover:shadow-xl border border-transparent hover:border-gold/30 transition-all duration-300 hover:-translate-y-1 h-full min-h-[140px]"
+                  className={`group flex flex-col items-center justify-center p-5 rounded-xl transition-all duration-300 hover:-translate-y-1 h-full min-h-[140px] relative overflow-hidden
+                    ${ind.prominent 
+                      ? 'bg-navy shadow-lg hover:shadow-2xl border border-navy' 
+                      : 'bg-white shadow-sm hover:shadow-xl border border-transparent hover:border-gold/30'}`}
                 >
-                  <div className="w-14 h-14 rounded-full bg-lightbg group-hover:bg-gold/10 flex items-center justify-center transition-colors duration-300 mb-3 shrink-0">
-                    <ind.icon size={26} className="text-navy group-hover:text-gold transition-colors duration-300" />
+                  {ind.prominent && <div className="absolute top-0 right-0 w-16 h-16 bg-gold opacity-10 rounded-bl-full" />}
+                  <div className={`w-14 h-14 rounded-full flex items-center justify-center transition-colors duration-300 mb-3 shrink-0 relative z-10
+                    ${ind.prominent ? 'bg-white/10 group-hover:bg-gold/20' : 'bg-lightbg group-hover:bg-gold/10'}`}>
+                    <ind.icon size={26} className={`transition-colors duration-300 ${ind.prominent ? 'text-gold group-hover:text-white' : 'text-navy group-hover:text-gold'}`} />
                   </div>
-                  <span className="text-navy text-xs font-semibold text-center leading-snug group-hover:text-gold transition-colors duration-300">
+                  <span className={`text-xs font-semibold text-center leading-snug transition-colors duration-300 relative z-10
+                    ${ind.prominent ? 'text-white group-hover:text-gold' : 'text-navy group-hover:text-gold'}`}>
                     {ind.label}
                   </span>
                 </Link>

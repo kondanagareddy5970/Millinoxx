@@ -8,14 +8,14 @@ const slides = [
   { image: 'https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?w=1600&q=85' },
 ]
 
-const models = [
-  { title: 'Contract Staffing', desc: 'Short to long-term contract employees for project-based work, covering all skill levels.' },
-  { title: 'Contract-to-Hire', desc: 'Trial engagement before permanent hire, minimizing risk while evaluating cultural fit.' },
-  { title: 'Project-Based Outsourcing', desc: 'End-to-end project manpower with full accountability and performance guarantees.' },
-  { title: 'Payroll Management', desc: 'Complete payroll, compliance, and HR administration outsourced to our expert team.' },
+const valueAdded = [
+  'Contract Staffing Solutions',
+  'Contract-to-Hire Transition',
+  'Project-Based Outsourcing',
+  'Payroll Administration',
+  'Compliance Management',
+  'Workforce Scaling'
 ]
-
-const benefits = ['Reduce Operational Costs', 'Scale Workforce Rapidly', 'Access Specialized Skills', 'Maintain Business Continuity', 'Ensure Compliance & Legal Cover', 'Focus on Core Business Activities']
 
 const sectors = ['Oil & Gas', 'Manufacturing', 'IT & Telecom', 'Banking & Finance', 'Healthcare', 'Construction', 'Retail & FMCG', 'Engineering']
 
@@ -30,7 +30,7 @@ export default function DeputationOutsourcing() {
           <div className="max-w-7xl mx-auto px-6">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
               <span className="text-gold text-sm font-semibold tracking-[0.25em] uppercase block mb-3">Our Services</span>
-              <h1 className="font-heading text-5xl font-bold text-white mb-4">Deputation / Manpower Outsourcing & Consulting</h1>
+              <h1 className="font-heading text-5xl font-bold text-white mb-4">Deputation / Manpower Outsourcing</h1>
               <div className="w-16 h-0.5 bg-gold" />
             </motion.div>
           </div>
@@ -41,54 +41,61 @@ export default function DeputationOutsourcing() {
         <div className="max-w-7xl mx-auto flex items-center gap-2 text-sm text-muted">
           <Link to="/" className="hover:text-gold transition-colors">Home</Link>
           <span>/</span>
+          <Link to="/services/deputation-outsourcing" className="hover:text-gold transition-colors">Services</Link>
+          <span>/</span>
           <span className="text-navy font-medium">Deputation & Outsourcing</span>
         </div>
       </div>
 
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6">
-          <motion.div {...fadeInUp} className="mb-14">
-            <h2 className="font-heading text-3xl font-bold text-navy mb-5">Flexible Staffing Solutions for Modern Business</h2>
-            <p className="text-muted leading-relaxed text-lg">
-              In a rapidly evolving business environment, flexibility is paramount. Millinoxx Experts offers comprehensive deputation and manpower outsourcing solutions designed to give your organization the agility it needs — without compromising on quality, compliance, or expertise.
-            </p>
+          {/* Intro */}
+          <motion.div {...fadeInUp} className="mb-14 grid grid-cols-1 lg:grid-cols-3 gap-10">
+            <div className="lg:col-span-2">
+              <div className="flex items-center gap-3 mb-5">
+                <RefreshCw size={28} className="text-gold" />
+                <h2 className="font-heading text-2xl font-bold text-navy">Flexible Staffing Solutions for Modern Business</h2>
+              </div>
+              <p className="text-muted leading-relaxed mb-5">
+                In a rapidly evolving business environment, flexibility is paramount. Millinoxx Experts offers comprehensive deputation and manpower outsourcing solutions designed to give your organization the agility it needs — without compromising on quality, compliance, or expertise.
+              </p>
+              <p className="text-muted leading-relaxed">
+                Whether you need short-term contract staff to meet project demands or seek to outsource an entire department's operations, we deliver tailored solutions that minimize risk and maximize operational efficiency.
+              </p>
+            </div>
+            <div className="bg-navy rounded-card p-7 text-white">
+              <div className="font-heading text-xl font-bold text-gold mb-4">Quick Facts</div>
+              <div className="space-y-3">
+                <div className="flex items-center gap-3 text-sm"><BarChart size={16} className="text-gold" /><span>Reduce Operational Costs</span></div>
+                <div className="flex items-center gap-3 text-sm"><RefreshCw size={16} className="text-gold" /><span>Scale Workforce Rapidly</span></div>
+                <div className="flex items-center gap-3 text-sm"><UserCheck size={16} className="text-gold" /><span>Access Specialized Skills</span></div>
+                <div className="flex items-center gap-3 text-sm"><Building size={16} className="text-gold" /><span>Ensure Legal Compliance</span></div>
+              </div>
+            </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-14">
-            {models.map((m, i) => (
-              <motion.div key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-lightbg rounded-card p-7 border-l-4 border-gold hover:shadow-card transition-all duration-300">
-                <h4 className="font-heading text-lg font-bold text-navy mb-3">{m.title}</h4>
-                <p className="text-muted text-sm leading-relaxed">{m.desc}</p>
-              </motion.div>
-            ))}
-          </div>
+          {/* Sectors */}
+          <motion.div {...fadeInUp} className="mb-14">
+            <h3 className="font-heading text-2xl font-bold text-navy mb-6">Sectors We Serve</h3>
+            <div className="flex flex-wrap gap-3">
+              {sectors.map((s, i) => (
+                <span key={i} className="bg-gold/10 text-navy border border-gold/30 rounded-full px-5 py-2 text-sm font-medium">{s}</span>
+              ))}
+            </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-14">
-            <motion.div {...fadeInUp}>
-              <h3 className="font-heading text-2xl font-bold text-navy mb-5">Benefits for Employers</h3>
-              <div className="space-y-3">
-                {benefits.map((b, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <CheckCircle size={18} className="text-gold flex-shrink-0" />
-                    <span className="text-navy font-medium text-sm">{b}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-            <motion.div {...fadeInUp}>
-              <h3 className="font-heading text-2xl font-bold text-navy mb-5">Sectors We Serve</h3>
-              <div className="grid grid-cols-2 gap-3">
-                {sectors.map((s, i) => (
-                  <div key={i} className="bg-white border border-gray-100 rounded-lg p-3 text-center text-sm font-medium text-navy hover:border-gold transition-colors">{s}</div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
+          {/* Value Added */}
+          <motion.div {...fadeInUp} className="mb-14">
+            <h3 className="font-heading text-2xl font-bold text-navy mb-6">Value-Added Services</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {valueAdded.map((v, i) => (
+                <div key={i} className="flex items-start gap-3 bg-white rounded-lg p-4 border border-gray-100 hover:border-gold hover:shadow-card transition-all duration-200">
+                  <CheckCircle size={18} className="text-gold flex-shrink-0 mt-0.5" />
+                  <span className="text-navy text-sm font-medium">{v}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
 
           <motion.div {...fadeInUp} className="text-center">
             <Link to="/contact" className="btn-gold inline-flex items-center gap-2">Get In Touch <ArrowRight size={16} /></Link>

@@ -68,7 +68,7 @@ export default function CeoMessage() {
                 As a trusted headhunting and manpower recruitment partner, we've earned a reputation for delivering exceptional client service and connecting top-tier talent with organizations across the globe.
               </p>
               <p className="text-muted leading-relaxed mb-8">
-                From India to the Gulf, Europe, the UK, the USA, and beyond—we serve businesses of all sizes, from emerging startups to global enterprises. Our goal is to ensure that every hire is not just qualified but is a strategic fit—someone who aligns with your long-term vision.
+                From India to the Gulf, Europe, the UK, the USA, and beyond we serve businesses of all sizes, from emerging startups to global enterprises. Our goal is to ensure that every hire is not just qualified but is a strategic fit someone who aligns with your long term vision.
               </p>
 
               <div className="space-y-4 mb-8">
@@ -90,12 +90,12 @@ export default function CeoMessage() {
               </div>
 
               <p className="text-muted leading-relaxed mb-8">
-                We don't just fill vacancies—we build teams. At Millinoxx Experts, we know that modern businesses need more than just skills on paper. You need professionals who are adaptive, team-oriented, and aligned with your company culture. That's why our recruitment process dives deeper—assessing attitude, mindset, and growth potential to ensure every placement contributes to your success.
+                We don't just fill vacancies we build teams. At Millinoxx Experts, we know that modern businesses need more than just skills on paper. You need professionals who are adaptive, team-oriented, and aligned with your company culture. That's why our recruitment process dives deeper assessing attitude, mindset, and growth potential to ensure every placement contributes to your success.
               </p>
               <p className="text-navy font-semibold italic text-lg border-l-4 border-gold pl-5">
                 "Let's build a workforce that drives progress."
               </p>
-              <div className="mt-5 text-navy font-heading text-lg font-semibold">— SRINIVASU</div>
+              <div className="mt-5 text-navy font-heading text-lg font-semibold"> SRINIVASU</div>
               <div className="text-muted text-sm">Founder & CEO, Millinoxx Experts</div>
             </div>
           </motion.div>

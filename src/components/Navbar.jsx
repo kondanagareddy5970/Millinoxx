@@ -4,6 +4,8 @@ import { Menu, X } from 'lucide-react'
 import { FaFacebookF, FaLinkedinIn } from 'react-icons/fa'
 import logoImg from '../assets/logo.jpeg'
 
+import { servicesData, industriesData } from '../config/data'
+
 const navLinks = [
   {
     label: 'About Us',
@@ -17,37 +19,32 @@ const navLinks = [
   },
   {
     label: 'Services',
-    dropdown: [
-      { label: 'Artificial Intelligence Solutions', path: '/services/ai-solutions' },
-      { label: 'AI Automation & Intelligent Agents', path: '/services/ai-automation' },
-      { label: 'Machine Learning & Predictive Analytics', path: '/services/machine-learning' },
-      { label: 'Information Technology Services', path: '/services/it-services' },
-      { label: 'Generative AI & LLM Development', path: '/services/gen-ai' },
-      { label: 'Cloud & DevOps Engineering', path: '/services/cloud-devops' },
-      { label: 'Cyber Security Solutions', path: '/services/cyber-security' },
-      { label: 'Data Engineering & Business Intelligence', path: '/services/data-engineering' },
-    ],
+    path: '/services',
+    isMegaMenu: true,
+    groupedDropdown: [
+      {
+        groupLabel: 'AI & Technology',
+        items: servicesData.filter(s => ['/services/ai-solutions', '/services/ai-automation', '/services/machine-learning', '/services/gen-ai', '/services/it-services'].includes(s.path))
+      },
+      {
+        groupLabel: 'Cloud & Security',
+        items: servicesData.filter(s => ['/services/cloud-devops', '/services/cyber-security', '/services/data-engineering'].includes(s.path))
+      },
+      {
+        groupLabel: 'Recruitment & Staffing',
+        items: servicesData.filter(s => ['/services/international-recruitment', '/services/indian-recruitment'].includes(s.path))
+      },
+      {
+        groupLabel: 'Industrial Services',
+        items: servicesData.filter(s => ['/services/shutdown-maintenance', '/services/deputation-outsourcing'].includes(s.path))
+      }
+    ]
   },
   {
     label: 'Industries We Serve',
-    dropdown: [
-      { label: 'Heavy Equipment / Engineering', path: '/industries/heavy-equipment' },
-      { label: 'Power Plant / Sewage / Water Treatment', path: '/industries/power-plant' },
-      { label: 'Oil & Gas / EPC', path: '/industries/oil-gas' },
-      { label: 'MEP (Electromechanical / HVAC)', path: '/industries/mep' },
-      { label: 'Construction Industry / Real Estate', path: '/industries/construction' },
-      { label: 'Manufacturing', path: '/industries/manufacturing' },
-      { label: 'Shipping & Marine Industry', path: '/industries/shipping' },
-      { label: 'Automotive Industry', path: '/industries/automotive' },
-      { label: 'Aviation & Aerospace', path: '/industries/aviation' },
-      { label: 'Agricultural Industry', path: '/industries/agriculture' },
-      { label: 'Hospitality Sector', path: '/industries/hospitality' },
-      { label: 'Garments & FMCG', path: '/industries/garments' },
-      { label: 'Hospitals & Medical', path: '/industries/hospitals' },
-      { label: 'IT / Telecom Sector', path: '/industries/it-telecom' },
-      { label: 'Banking & Finance', path: '/industries/banking-finance' },
-      { label: 'Cyber Security', path: '/industries/cyber-security' },
-    ],
+    path: '/industries',
+    isMegaMenu: true,
+    dropdown: industriesData,
   },
   {
     label: 'Gallery',
@@ -85,7 +82,11 @@ export default function Navbar() {
   }, [])
 
   const isActive = (path) => location.pathname === path
-  const isParentActive = (dropdown) => dropdown?.some(d => location.pathname === d.path)
+  const isParentActive = (link) => {
+    if (link.dropdown) return link.dropdown.some(d => location.pathname === d.path)
+    if (link.groupedDropdown) return link.groupedDropdown.some(g => g.items.some(d => location.pathname === d.path))
+    return false
+  }
 
   return (
     <>
@@ -102,30 +103,76 @@ export default function Navbar() {
             {/* Desktop Nav */}
             <div className="hidden lg:flex items-center gap-5">
               {navLinks.map((link) =>
-                link.dropdown ? (
+                link.dropdown || link.groupedDropdown ? (
                   <div key={link.label} className="relative group py-2">
-                    <button
-                      className={`flex items-center gap-1 px-2.5 py-1 text-sm font-medium transition-colors duration-200 hover:text-gold
-                        ${isParentActive(link.dropdown) ? 'text-gold' : 'text-white'}`}
-                    >
-                      {link.label}
-                    </button>
+                    {link.path ? (
+                      <Link
+                        to={link.path}
+                        className={`flex items-center gap-1 px-2.5 py-1 text-sm font-medium transition-colors duration-200 hover:text-gold
+                          ${isParentActive(link) ? 'text-gold' : 'text-white'}`}
+                      >
+                        {link.label}
+                      </Link>
+                    ) : (
+                      <button
+                        className={`flex items-center gap-1 px-2.5 py-1 text-sm font-medium transition-colors duration-200 hover:text-gold
+                          ${isParentActive(link) ? 'text-gold' : 'text-white'}`}
+                      >
+                        {link.label}
+                      </button>
+                    )}
 
                     {/* Dropdown panel */}
                     <div className={`absolute top-full pt-2 z-[200] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-out
-                      ${link.label === 'Industries We Serve' ? 'left-1/2 -translate-x-1/2 w-[620px]' : 'left-0 min-w-[270px]'}`}>
-                      <div className={`bg-white shadow-2xl rounded-lg border border-gray-100 max-h-[75vh] overflow-y-auto py-2
-                        ${link.label === 'Industries We Serve' ? 'grid grid-cols-2 gap-x-2 p-3' : ''}`}>
-                        {link.dropdown.map(item => (
+                      ${link.isMegaMenu ? 'left-1/2 -translate-x-[45%] w-[960px]' : 'left-0 min-w-[240px]'}`}>
+                      <div className={`bg-white shadow-2xl rounded-lg border border-gray-100 max-h-[75vh] overflow-y-auto
+                        ${link.isMegaMenu ? 'p-8 grid gap-x-8 gap-y-4 ' + (link.groupedDropdown ? 'grid-cols-4' : 'grid-cols-3') : 'p-2 flex flex-col space-y-1'}`}>
+                        
+                        {/* Normal Dropdown */}
+                        {link.dropdown && !link.isMegaMenu && link.dropdown.map(item => (
                           <Link
                             key={item.path}
                             to={item.path}
-                            className={`flex items-center gap-2 px-5 py-2.5 text-sm hover:bg-amber-50 hover:text-yellow-700 transition-colors duration-150 rounded-md
-                              ${isActive(item.path) ? 'text-yellow-700 bg-amber-50 font-semibold' : 'text-navy'}`}
+                            className={`block py-2 px-4 text-sm text-gray-600 hover:text-navy hover:bg-gray-50 transition-colors duration-150 rounded-md
+                              ${isActive(item.path) ? 'text-navy bg-gray-50 font-semibold' : ''}`}
                           >
-                            <span className="w-1.5 h-1.5 rounded-full bg-gold flex-shrink-0" />
+                            {item.label}
+                          </Link>
+                        ))}
+
+                        {/* MegaMenu Flat Dropdown (Industries) */}
+                        {link.dropdown && link.isMegaMenu && link.dropdown.map(item => (
+                          <Link
+                            key={item.path}
+                            to={item.path}
+                            className={`flex items-center gap-3 py-2.5 px-4 text-sm transition-colors duration-150 rounded-md border border-transparent
+                              ${item.prominent 
+                                ? 'bg-navy/5 font-semibold text-navy hover:bg-navy/10 border-navy/10' 
+                                : 'text-gray-600 hover:text-navy hover:bg-gray-50'}
+                              ${isActive(item.path) ? 'text-navy bg-gray-50 font-semibold' : ''}`}
+                          >
+                            {item.icon && <item.icon size={16} className={item.prominent ? 'text-gold' : 'text-gray-400'} />}
                             <span>{item.label}</span>
                           </Link>
+                        ))}
+
+                        {/* MegaMenu Grouped Dropdown (Services) */}
+                        {link.groupedDropdown && link.groupedDropdown.map((group, idx) => (
+                          <div key={idx} className="flex flex-col">
+                            <h4 className="font-heading text-sm font-bold text-navy mb-4 border-b border-gray-100 pb-3">{group.groupLabel}</h4>
+                            <div className="flex flex-col space-y-1.5">
+                              {group.items.map(item => (
+                                <Link
+                                  key={item.path}
+                                  to={item.path}
+                                  className={`block py-2 px-3 text-sm text-gray-600 hover:text-navy hover:bg-gray-50 transition-colors duration-150 rounded-md
+                                    ${isActive(item.path) ? 'text-navy bg-gray-50 font-semibold' : ''}`}
+                                >
+                                  {item.label}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
                         ))}
                       </div>
                     </div>
@@ -165,7 +212,6 @@ export default function Navbar() {
             </div>
 
             {/* Mobile Hamburger */}
-            {/* Mobile Actions */}
             <div className="flex lg:hidden items-center gap-2">
               <div id="google_translate_element_mobile" className="scale-75 origin-right" />
               <button
@@ -198,31 +244,68 @@ export default function Navbar() {
                 to="/"
                 onClick={() => setMobileOpen(false)}
                 className={`block px-4 py-3 rounded-lg text-sm font-semibold mb-1
-                  ${isActive('/') ? 'text-yellow-700 bg-amber-50' : 'text-navy hover:bg-gray-50'}`}
+                  ${isActive('/') ? 'text-navy bg-gray-50' : 'text-gray-700 hover:bg-gray-50'}`}
               >
                 Home
               </Link>
               {navLinks.map((link) =>
-                link.dropdown ? (
+                link.dropdown || link.groupedDropdown ? (
                   <div key={link.label}>
-                    <button
-                      onClick={() => setMobileExpanded(mobileExpanded === link.label ? null : link.label)}
-                      className={`w-full flex items-center justify-between px-4 py-3 rounded-lg text-sm font-semibold mb-1
-                        ${isParentActive(link.dropdown) ? 'text-yellow-700 bg-amber-50' : 'text-navy hover:bg-gray-50'}`}
-                    >
-                      {link.label}
-                    </button>
+                    <div className="flex items-center justify-between w-full pr-2">
+                      {link.path ? (
+                        <Link
+                          to={link.path}
+                          onClick={() => setMobileOpen(false)}
+                          className={`flex-1 px-4 py-3 rounded-lg text-sm font-semibold
+                            ${isParentActive(link) ? 'text-navy bg-gray-50' : 'text-gray-700 hover:bg-gray-50'}`}
+                        >
+                          {link.label}
+                        </Link>
+                      ) : (
+                        <span className={`flex-1 px-4 py-3 rounded-lg text-sm font-semibold
+                          ${isParentActive(link) ? 'text-navy bg-gray-50' : 'text-gray-700'}`}>
+                          {link.label}
+                        </span>
+                      )}
+                      
+                      <button
+                        onClick={() => setMobileExpanded(mobileExpanded === link.label ? null : link.label)}
+                        className="p-2 text-gray-500 hover:text-navy rounded-md"
+                        aria-label={`Expand ${link.label}`}
+                      >
+                        <span className="text-xl leading-none">{mobileExpanded === link.label ? '−' : '+'}</span>
+                      </button>
+                    </div>
+                    
                     {mobileExpanded === link.label && (
-                      <div className="ml-4 mb-2 border-l-2 border-gold pl-3">
-                        {link.dropdown.map(item => (
+                      <div className="ml-4 mb-2 border-l-2 border-gray-200 pl-3 mt-1">
+                        {link.dropdown && link.dropdown.map(item => (
                           <Link
                             key={item.path}
                             to={item.path}
                             onClick={() => setMobileOpen(false)}
-                            className={`block py-2 px-2 text-sm rounded transition-colors ${isActive(item.path) ? 'text-yellow-700 font-semibold' : 'text-gray-500 hover:text-yellow-700'}`}
+                            className={`flex items-center gap-2 py-2 px-3 text-sm rounded transition-colors ${item.prominent ? 'font-semibold text-navy bg-navy/5' : ''} ${isActive(item.path) ? 'text-navy font-semibold bg-gray-50' : 'text-gray-600 hover:text-navy hover:bg-gray-50'}`}
                           >
-                            {item.label}
+                            {item.icon && <item.icon size={14} className={item.prominent ? 'text-gold' : 'text-gray-400'} />}
+                            <span>{item.label}</span>
                           </Link>
+                        ))}
+                        {link.groupedDropdown && link.groupedDropdown.map((group, idx) => (
+                          <div key={idx} className="mb-4 mt-2">
+                            <h4 className="text-xs font-bold text-gray-400 mb-2 px-3 uppercase tracking-wider">{group.groupLabel}</h4>
+                            <div className="flex flex-col space-y-1">
+                              {group.items.map(item => (
+                                <Link
+                                  key={item.path}
+                                  to={item.path}
+                                  onClick={() => setMobileOpen(false)}
+                                  className={`block py-2 px-3 text-sm rounded transition-colors ${isActive(item.path) ? 'text-navy font-semibold bg-gray-50' : 'text-gray-600 hover:text-navy hover:bg-gray-50'}`}
+                                >
+                                  {item.label}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
                         ))}
                       </div>
                     )}
@@ -233,7 +316,7 @@ export default function Navbar() {
                     to={link.path}
                     onClick={() => setMobileOpen(false)}
                     className={`block px-4 py-3 rounded-lg text-sm font-semibold mb-1
-                      ${isActive(link.path) ? 'text-yellow-700 bg-amber-50' : 'text-navy hover:bg-gray-50'}`}
+                      ${isActive(link.path) ? 'text-navy bg-gray-50' : 'text-gray-700 hover:bg-gray-50'}`}
                   >
                     {link.label}
                   </Link>
@@ -243,12 +326,12 @@ export default function Navbar() {
               <Link
                 to="/contact"
                 onClick={() => setMobileOpen(false)}
-                className="mt-4 block text-center bg-gold text-navy font-bold px-6 py-3 rounded-sm transition-all duration-200 hover:bg-yellow-500 shadow-md"
+                className="mt-6 block text-center bg-gold text-navy font-bold px-6 py-3 rounded-sm transition-all duration-200 hover:bg-yellow-500 shadow-md"
               >
                 Get In Touch
               </Link>
 
-              <div className="mt-6 flex justify-center gap-4">
+              <div className="mt-8 flex justify-center gap-4 pb-6">
                 <a href="https://www.facebook.com/people/Millinoxx-Pvt-Ltd/61579129431567/" target="_blank" rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-[#004b75] flex items-center justify-center">
                   <FaFacebookF size={14} className="text-white" />

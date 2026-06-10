@@ -80,7 +80,7 @@ export default function Footer() {
             <h4 className="font-heading text-lg font-semibold text-gold mb-5 pb-2 border-b border-gold/30">Contact Us</h4>
             <ul className="space-y-5">
 
-              {/* Russia Office */}
+              {/* Moscow Office */}
               <li>
                 <div className="flex items-center gap-1.5 mb-2">
                   <span className="text-[10px] font-bold uppercase tracking-widest text-gold bg-gold/10 px-2 py-0.5 rounded">Global HQ</span>

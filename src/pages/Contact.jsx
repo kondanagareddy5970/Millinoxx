@@ -7,7 +7,7 @@ const fadeInUp = { initial: { opacity: 0, y: 40 }, whileInView: { opacity: 1, y:
 
 const offices = [
   {
-    city: 'Russia Office',
+    city: 'Moscow Office',
     badge: 'Global Headquarters',
     badgeStyle: 'bg-gold/20 text-gold',
     company: 'Millinoxx Engineering & Consultancy',

@@ -1,21 +1,23 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import HeroSlider from '../../components/HeroSlider'
-import { CheckCircle, ArrowRight, AlertTriangle, Clock, Shield, Wrench } from 'lucide-react'
+import { CheckCircle, Clock, Shield, Wrench, ArrowRight, AlertTriangle, Activity } from 'lucide-react'
 
 const slides = [
   { image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1600&q=85' },
   { image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=85' },
 ]
 
-const roles = ['Shutdown Managers / Coordinators', 'Piping Engineers & Supervisors', 'Mechanical Engineers', 'Electrical Engineers', 'Instrumentation Engineers', 'Welders (GTAW, SMAW, FCAW)', 'Pipe Fitters & Riggers', 'Safety Officers / HSE Engineers', 'NDT Technicians', 'Scaffolders', 'Insulation Technicians', 'Quality Control Inspectors']
-
-const features = [
-  { icon: Clock, title: 'Rapid Mobilization', desc: 'Quick turnaround — qualified manpower mobilized within 24-72 hours of confirmation.' },
-  { icon: Shield, title: 'Safety Compliance', desc: 'All personnel certified in HSE protocols, OSHA, and site-specific safety requirements.' },
-  { icon: Wrench, title: 'Specialized Skills', desc: 'Highly skilled tradesmen with experience in complex shutdown and turnaround operations.' },
-  { icon: AlertTriangle, title: 'Zero Downtime Focus', desc: 'Experienced in high-pressure, time-critical operations with minimal plant downtime.' },
+const valueAdded = [
+  'Pre-Shutdown Planning',
+  'On-site Coordination',
+  'Safety Protocol Management',
+  'Quality Control & Inspection',
+  'Progress Reporting',
+  'Post-Shutdown Handover'
 ]
+
+const roles = ['Shutdown Managers / Coordinators', 'Piping Engineers & Supervisors', 'Mechanical Engineers', 'Electrical Engineers', 'Instrumentation Engineers', 'Welders (GTAW, SMAW, FCAW)', 'Pipe Fitters & Riggers', 'Safety Officers / HSE Engineers', 'NDT Technicians', 'Scaffolders', 'Insulation Technicians', 'Quality Control Inspectors']
 
 const fadeInUp = { initial: { opacity: 0, y: 40 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 0.7 } }
 
@@ -39,46 +41,57 @@ export default function ShutdownMaintenance() {
         <div className="max-w-7xl mx-auto flex items-center gap-2 text-sm text-muted">
           <Link to="/" className="hover:text-gold transition-colors">Home</Link>
           <span>/</span>
+          <Link to="/services/shutdown-maintenance" className="hover:text-gold transition-colors">Services</Link>
+          <span>/</span>
           <span className="text-navy font-medium">Shutdown & Turnaround Maintenance</span>
         </div>
       </div>
 
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6">
-          <motion.div {...fadeInUp} className="mb-14">
-            <h2 className="font-heading text-3xl font-bold text-navy mb-5">Specialized Maintenance Manpower</h2>
-            <p className="text-muted leading-relaxed mb-5 text-lg">
-              Millinoxx Experts specializes in providing highly skilled technical manpower for planned shutdowns, turnaround operations, and maintenance projects in the oil & gas, power generation, refinery, petrochemical, and heavy industrial sectors.
-            </p>
-            <p className="text-muted leading-relaxed">
-              Our extensive roster of certified tradesmen and engineers ensures you have the right personnel on-site at exactly the right time — keeping your operations on schedule and within budget.
-            </p>
+          {/* Intro */}
+          <motion.div {...fadeInUp} className="mb-14 grid grid-cols-1 lg:grid-cols-3 gap-10">
+            <div className="lg:col-span-2">
+              <div className="flex items-center gap-3 mb-5">
+                <Wrench size={28} className="text-gold" />
+                <h2 className="font-heading text-2xl font-bold text-navy">Specialized Maintenance Manpower Solutions</h2>
+              </div>
+              <p className="text-muted leading-relaxed mb-5">
+                Millinoxx Experts specializes in providing highly skilled technical manpower for planned shutdowns, turnaround operations, and maintenance projects in the oil & gas, power generation, refinery, petrochemical, and heavy industrial sectors.
+              </p>
+              <p className="text-muted leading-relaxed">
+                Our extensive roster of certified tradesmen and engineers ensures you have the right personnel on-site at exactly the right time — keeping your operations on schedule and within budget.
+              </p>
+            </div>
+            <div className="bg-navy rounded-card p-7 text-white">
+              <div className="font-heading text-xl font-bold text-gold mb-4">Quick Facts</div>
+              <div className="space-y-3">
+                <div className="flex items-center gap-3 text-sm"><Clock size={16} className="text-gold" /><span>Rapid Mobilization (24-72 hrs)</span></div>
+                <div className="flex items-center gap-3 text-sm"><Shield size={16} className="text-gold" /><span>100% Safety Compliance</span></div>
+                <div className="flex items-center gap-3 text-sm"><Wrench size={16} className="text-gold" /><span>Specialized Technical Skills</span></div>
+                <div className="flex items-center gap-3 text-sm"><Activity size={16} className="text-gold" /><span>Zero Downtime Focus</span></div>
+              </div>
+            </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-14">
-            {features.map((f, i) => (
-              <motion.div key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-navy rounded-card p-6 text-white">
-                <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center mb-4">
-                  <f.icon size={22} className="text-gold" />
-                </div>
-                <h4 className="font-heading text-base font-bold text-gold mb-2">{f.title}</h4>
-                <p className="text-white/70 text-sm leading-relaxed">{f.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-
+          {/* Roles */}
           <motion.div {...fadeInUp} className="mb-14">
             <h3 className="font-heading text-2xl font-bold text-navy mb-6">Key Roles We Supply</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            <div className="flex flex-wrap gap-3">
               {roles.map((r, i) => (
-                <div key={i} className="flex items-center gap-3 bg-lightbg rounded-lg p-4 hover:bg-gold/5 transition-colors">
-                  <CheckCircle size={16} className="text-gold flex-shrink-0" />
-                  <span className="text-navy text-sm font-medium">{r}</span>
+                <span key={i} className="bg-gold/10 text-navy border border-gold/30 rounded-full px-5 py-2 text-sm font-medium">{r}</span>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Value Added */}
+          <motion.div {...fadeInUp} className="mb-14">
+            <h3 className="font-heading text-2xl font-bold text-navy mb-6">Value-Added Services</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {valueAdded.map((v, i) => (
+                <div key={i} className="flex items-start gap-3 bg-white rounded-lg p-4 border border-gray-100 hover:border-gold hover:shadow-card transition-all duration-200">
+                  <CheckCircle size={18} className="text-gold flex-shrink-0 mt-0.5" />
+                  <span className="text-navy text-sm font-medium">{v}</span>
                 </div>
               ))}
             </div>

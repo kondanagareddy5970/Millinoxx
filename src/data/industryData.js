@@ -1,180 +1,593 @@
 const industryData = {
-  'heavy-equipment': {
-    title: 'Heavy Equipment & Engineering Industry',
-    icon: '🏗️',
-    images: [
-      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=85',
-      'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1600&q=85',
-    ],
-    overview: 'The Heavy Equipment and Engineering industry serves as the backbone of technological advancement and infrastructure development. It plays a pivotal role in shaping economies through innovation, large-scale construction, and industrial progress. Millinoxx Experts provides highly skilled professionals to drive this vital sector forward.',
-    roles: ['Mechanical Engineers', 'Electrical Engineers', 'Civil Engineers', 'Design Engineers (CAD/CAM)', 'Heavy Equipment Operators (Crane, Bulldozer, Loader, Excavator)', 'Hydraulic Mechanics', 'Diesel Mechanics', 'Project Managers', 'Safety Officers / HSE Engineers', 'Procurement Engineers', 'Quality Control Engineers', 'Structural Engineers'],
-    countries: ['Russia', 'Singapore', 'Malaysia', 'Bahrain', 'Saudi Arabia', 'UAE', 'Kuwait', 'Oman', 'Qatar', 'Germany', 'UK', 'Australia'],
-  },
-  'power-plant': {
-    title: 'Power Plant / Sewage / Water Treatment',
-    icon: '⚡',
-    images: [
-      'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=1600&q=85',
-      'https://images.unsplash.com/photo-1548669985-9ef9d7b76e23?w=1600&q=85',
-    ],
-    overview: 'The Power & Energy sector encompasses thermal, hydro, solar, and nuclear power plants, along with water treatment and sewage management facilities. Millinoxx Experts provides specialized manpower to keep these critical infrastructure projects operating at peak performance.',
-    roles: ['Power Plant Engineers', 'Electrical Engineers', 'Instrumentation & Control Engineers', 'Turbine Technicians', 'Boiler Engineers', 'Water Treatment Plant Operators', 'Environmental Engineers', 'Control Room Operators', 'Maintenance Engineers', 'Safety Officers', 'Commissioning Engineers', 'SCADA Specialists'],
-    countries: ['Saudi Arabia', 'UAE', 'Kuwait', 'Oman', 'Qatar', 'UK', 'Germany', 'India', 'Malaysia', 'Indonesia'],
-  },
-  'oil-gas': {
-    title: 'Oil & Gas / EPC Industry',
-    icon: '🛢️',
-    images: [
-      'https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=1600&q=85',
-      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=85',
-    ],
-    overview: 'The Oil & Gas and EPC sector is one of the world\'s most demanding and rewarding industries. Millinoxx Experts has deep expertise in sourcing certified professionals for upstream, midstream, and downstream operations, as well as large-scale EPC projects globally.',
-    roles: ['Petroleum Engineers', 'Process Engineers', 'Pipeline Engineers', 'Drilling Engineers', 'Wellsite Geologists', 'Refinery Operators', 'HSE Managers', 'Project Engineers (EPC)', 'Piping Engineers', 'Commissioning Engineers', 'NDT Inspectors', 'Procurement Specialists'],
-    countries: ['Saudi Arabia', 'UAE', 'Kuwait', 'Oman', 'Qatar', 'Iraq', 'Bahrain', 'Russia', 'Nigeria', 'UK', 'Norway', 'Australia'],
-  },
-  'mep': {
-    title: 'MEP (Electromechanical / HVAC)',
-    icon: '🔧',
-    images: [
-      'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1600&q=85',
-      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=85',
-    ],
-    overview: 'Mechanical, Electrical, and Plumbing (MEP) engineering is critical to every built environment — from commercial towers to hospitals and industrial complexes. Millinoxx Experts provides expert MEP professionals for construction, maintenance, and commissioning projects worldwide.',
-    roles: ['HVAC Engineers & Technicians', 'MEP Coordinators', 'Electrical Engineers', 'Plumbing Engineers', 'Fire Safety Engineers', 'BMS (Building Management System) Engineers', 'Chiller Technicians', 'Low Voltage (LV) Engineers', 'ELV Engineers', 'Facility Management Professionals', 'MEP Supervisors', 'Quantity Surveyors'],
-    countries: ['UAE', 'Saudi Arabia', 'Qatar', 'Kuwait', 'Bahrain', 'Oman', 'UK', 'Germany', 'Singapore', 'Malaysia'],
-  },
-  'construction': {
-    title: 'Construction Industry / Real Estate',
-    icon: '🏛️',
-    images: [
-      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=85',
-      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=85',
-    ],
-    overview: 'Construction and real estate drive economic growth and urban development globally. From mega infrastructure projects to luxury residential developments, Millinoxx Experts sources the skilled professionals needed to bring ambitious projects to life on time and within budget.',
-    roles: ['Civil Engineers', 'Structural Engineers', 'Site Engineers', 'Project Managers', 'Construction Managers', 'Quantity Surveyors', 'Architects', 'BIM Engineers', 'Foremen & Supervisors', 'Safety Officers', 'Real Estate Developers', 'Planning Engineers'],
-    countries: ['UAE', 'Saudi Arabia', 'Qatar', 'UK', 'Germany', 'Australia', 'Singapore', 'India', 'Malaysia', 'Oman'],
-  },
-  'manufacturing': {
-    title: 'Manufacturing Industry',
-    icon: '🏭',
-    images: [
-      'https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?w=1600&q=85',
-      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=85',
-    ],
-    overview: 'Manufacturing is the engine of industrial economies. From plastics to steel, cement to pharmaceuticals, Millinoxx Experts supplies skilled and semi-skilled manpower for production, quality, maintenance, and engineering functions across all manufacturing sub-sectors.',
-    roles: ['Production Engineers', 'Quality Engineers', 'Manufacturing Engineers', 'Process Engineers', 'Maintenance Engineers', 'CNC Operators', 'Tool & Die Makers', 'Welders & Fabricators', 'Industrial Electricians', 'Shift Supervisors', 'Lean/Six Sigma Engineers', 'Supply Chain Managers'],
-    countries: ['Germany', 'Malaysia', 'Singapore', 'Saudi Arabia', 'UAE', 'USA', 'UK', 'Japan', 'South Korea', 'India'],
-  },
-  'shipping': {
-    title: 'Shipping & Marine Industry',
-    icon: '⚓',
-    images: [
-      'https://images.unsplash.com/photo-1494587351196-bbf5f29cff42?w=1600&q=85',
-      'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1600&q=85',
-    ],
-    overview: 'The shipping and marine industry moves over 80% of global trade. Millinoxx Experts provides qualified maritime professionals — from deck officers to marine engineers — for vessels, ports, shipyards, and offshore facilities worldwide.',
-    roles: ['Marine Engineers', 'Deck Officers', 'Ship Captains', 'Nautical Officers', 'Port Managers', 'Maritime Safety Officers', 'Shipyard Engineers', 'Naval Architects', 'Marine Electricians', 'Crane Operators', 'Riggers & Welders', 'Logistics Coordinators'],
-    countries: ['Singapore', 'UAE', 'UK', 'Norway', 'Greece', 'Malaysia', 'India', 'Japan', 'South Korea', 'Germany'],
-  },
-  'automotive': {
-    title: 'Automotive Industry',
-    icon: '🚗',
-    images: [
-      'https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=1600&q=85',
-      'https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?w=1600&q=85',
-    ],
-    overview: 'The automotive industry is undergoing a historic transformation with EV adoption, autonomous driving, and connected vehicles. Millinoxx Experts helps automotive companies secure top engineering, design, and manufacturing talent to lead this evolution.',
-    roles: ['Automotive Engineers', 'Mechanical Design Engineers', 'Electrical Vehicle (EV) Engineers', 'Embedded Systems Engineers', 'Quality Assurance Engineers', 'Production Managers', 'Supplier Quality Engineers', 'Homologation Engineers', 'R&D Engineers', 'After-Sales Technical Managers', 'Assembly Line Supervisors', 'Logistics & Supply Chain Managers'],
-    countries: ['Germany', 'Japan', 'USA', 'UK', 'India', 'South Korea', 'Malaysia', 'Thailand', 'UAE', 'China'],
-  },
-  'aviation': {
-    title: 'Aviation & Aerospace Industry',
-    icon: '✈️',
-    images: [
-      'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1600&q=85',
-      'https://images.unsplash.com/photo-1530521954074-e64f6810b32d?w=1600&q=85',
-    ],
-    overview: 'Aviation and aerospace demand the highest standards of technical precision, safety, and expertise. Millinoxx Experts places qualified aviation professionals — from MRO technicians to flight operations specialists — with airlines, MROs, and aerospace OEMs globally.',
-    roles: ['Aircraft Maintenance Engineers (AME)', 'Avionics Technicians', 'Aerospace Engineers', 'Quality Assurance Inspectors', 'Ground Support Equipment Operators', 'Pilots (Commercial & Private)', 'Air Traffic Controllers', 'Flight Operations Officers', 'MRO Technicians', 'Composite Repair Technicians', 'NDT Inspectors (Aviation)', 'Safety & Compliance Officers'],
-    countries: ['UAE', 'Saudi Arabia', 'Qatar', 'UK', 'Germany', 'Singapore', 'Malaysia', 'India', 'USA', 'Australia'],
-  },
-  'agriculture': {
-    title: 'Agricultural Industry',
-    icon: '🌾',
-    images: [
-      'https://images.unsplash.com/photo-1500651230702-0e2d8a49d4e6?w=1600&q=85',
-      'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=1600&q=85',
-    ],
-    overview: 'Modern agriculture integrates technology and sustainability to feed the world. Millinoxx Experts provides agri-professionals for large-scale farms, food processing, research, and agribusiness operations across emerging and developed markets.',
-    roles: ['Agricultural Engineers', 'Agronomists', 'Farm Managers', 'Food Processing Technologists', 'Irrigation Engineers', 'Soil Scientists', 'Greenhouse Managers', 'Agri-Machinery Operators', 'Quality Control (Food)', 'Supply Chain Managers', 'Livestock Experts', 'Agricultural Economists'],
-    countries: ['Saudi Arabia', 'UAE', 'Australia', 'New Zealand', 'UK', 'Canada', 'India', 'Kenya', 'South Africa', 'Malaysia'],
-  },
-  'hospitality': {
-    title: 'Hospitality Sector',
-    icon: '🏨',
-    images: [
-      'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&q=85',
-      'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1600&q=85',
-    ],
-    overview: 'The global hospitality sector demands professionals who deliver extraordinary guest experiences. Millinoxx Experts sources skilled hospitality talent — from five-star hotel management to F&B professionals — for leading hotel brands, resorts, and event companies worldwide.',
-    roles: ['Hotel General Managers', 'Food & Beverage Managers', 'Executive Chefs', 'Sous Chefs', 'Front Office Managers', 'Concierge Professionals', 'Revenue Managers', 'Housekeeping Managers', 'Event Coordinators', 'Restaurant Managers', 'Spa & Wellness Managers', 'Guest Relations Officers'],
-    countries: ['UAE', 'Saudi Arabia', 'Qatar', 'Maldives', 'UK', 'France', 'Singapore', 'Malaysia', 'India', 'Australia'],
-  },
-  'garments': {
-    title: 'Garments & FMCG Sector',
-    icon: '👗',
-    images: [
-      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=85',
-      'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=1600&q=85',
-    ],
-    overview: 'The garments and FMCG sector is one of the largest global employers, requiring specialized talent in design, production, retail, and supply chain. Millinoxx Experts connects garment manufacturers, fashion brands, and FMCG companies with skilled professionals.',
-    roles: ['Garment Technologists', 'Fashion Designers', 'Production Managers', 'Merchandisers', 'Quality Control Managers', 'Textile Engineers', 'Pattern Makers', 'FMCG Brand Managers', 'Category Managers', 'Trade Marketing Managers', 'Supply Chain Analysts', 'Retail Operations Managers'],
-    countries: ['Bangladesh', 'India', 'UAE', 'UK', 'Germany', 'Malaysia', 'Singapore', 'Turkey', 'Saudi Arabia', 'USA'],
-  },
-  'hospitals': {
-    title: 'Hospitals & Medical Sector',
-    icon: '🏥',
-    images: [
-      'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1600&q=85',
-      'https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=1600&q=85',
-    ],
-    overview: 'Healthcare is a mission-critical sector requiring highly qualified professionals with global certifications and compassionate care. Millinoxx Experts specializes in recruiting medical, paramedical, nursing, and allied health professionals for hospitals, clinics, and healthcare systems worldwide.',
-    roles: ['Specialist Physicians', 'Surgeons', 'Nurses (ICU, ER, OR)', 'Paramedics', 'Pharmacists', 'Radiologists', 'Medical Lab Technicians', 'Physiotherapists', 'Medical Coders & Billers', 'Healthcare Administrators', 'Dentists', 'Hospital IT Specialists'],
-    countries: ['Saudi Arabia', 'UAE', 'Qatar', 'Kuwait', 'Bahrain', 'Oman', 'UK', 'Canada', 'Australia', 'Germany'],
-  },
-  'it-telecom': {
-    title: 'IT / Telecom Sector',
+  'information-technology': {
+    title: 'Information Technology',
     icon: '💻',
     images: [
-      'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&q=85',
-      'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1600&q=85',
+      'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&q=85'
     ],
-    overview: 'The IT and telecom sector drives connectivity and digital innovation globally. Millinoxx Experts sources top IT and telecommunications professionals for software companies, internet providers, telecom operators, and digital infrastructure businesses.',
-    roles: ['Software Engineers', 'Network Engineers', 'Telecom Architects', '5G Specialists', 'RF Engineers', 'Cloud Engineers', 'DevOps Engineers', 'Cybersecurity Analysts', 'Data Scientists', 'AI/ML Engineers', 'IT Project Managers', 'Technical Support Specialists'],
-    countries: ['UAE', 'Saudi Arabia', 'UK', 'Germany', 'Singapore', 'USA', 'India', 'Australia', 'Malaysia', 'Canada'],
+    overview: 'The IT sector is the driving force behind modern global connectivity and digital transformation. Millinoxx Experts provides top-tier IT professionals to software companies, enterprise IT departments, and digital infrastructure businesses worldwide, ensuring rapid deployment of scalable technical solutions.',
+    services: [
+      'IT Staff Augmentation',
+      'Dedicated Development Teams',
+      'Enterprise Software Staffing',
+      'Cloud Infrastructure Recruitment',
+      'Executive Search for IT Leaders',
+      'Global IT Manpower Outsourcing'
+    ],
+    roles: [
+      'Software Engineers (Full Stack, Backend, Frontend)',
+      'Cloud & DevOps Engineers',
+      'System Architects',
+      'IT Project Managers',
+      'QA & Automation Engineers',
+      'Database Administrators (DBA)'
+    ],
+    statistics: [
+      { value: '500+', label: 'IT Placements' },
+      { value: '48h', label: 'Turnaround Time' },
+      { value: '98%', label: 'Client Satisfaction' },
+      { value: '15+', label: 'Countries Served' }
+    ],
+    countries: ['USA', 'UK', 'UAE', 'Saudi Arabia', 'India', 'Germany', 'Singapore', 'Canada']
   },
-  'banking-finance': {
-    title: 'Banking & Finance Sector',
-    icon: '💰',
+  'artificial-intelligence': {
+    title: 'Artificial Intelligence',
+    icon: '🧠',
     images: [
-      'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1600&q=85',
-      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=85',
+      'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1600&q=85'
     ],
-    overview: 'Banking and finance require precision, compliance, and domain expertise. Millinoxx Experts recruits highly qualified financial professionals for banks, investment firms, insurance companies, fintech startups, and regulatory bodies across the globe.',
-    roles: ['Investment Bankers', 'Chartered Accountants', 'Financial Analysts', 'Risk Managers', 'Compliance Officers', 'Treasury Managers', 'Fintech Developers', 'Credit Analysts', 'Wealth Managers', 'Insurance Underwriters', 'Internal Auditors', 'Portfolio Managers'],
-    countries: ['UAE', 'Saudi Arabia', 'UK', 'Singapore', 'USA', 'Germany', 'India', 'Australia', 'Bahrain', 'Luxembourg'],
+    overview: 'Artificial Intelligence is revolutionizing every major industry through automation, predictive modeling, and intelligent systems. We specialize in sourcing elite AI researchers, data scientists, and ML engineers who can translate complex data into strategic business value.',
+    services: [
+      'AI & ML Talent Acquisition',
+      'Data Science Team Building',
+      'Contract AI Specialists',
+      'AI Leadership Search',
+      'R&D Staffing',
+      'Turnkey AI Project Resourcing'
+    ],
+    roles: [
+      'Machine Learning Engineers',
+      'Data Scientists',
+      'AI Research Scientists',
+      'NLP Specialists',
+      'Computer Vision Engineers',
+      'AI Product Managers'
+    ],
+    statistics: [
+      { value: '200+', label: 'AI Experts Placed' },
+      { value: '99%', label: 'Retention Rate' },
+      { value: 'Top 1%', label: 'Talent Network' },
+      { value: '10+', label: 'Global Markets' }
+    ],
+    countries: ['USA', 'UK', 'Germany', 'UAE', 'India', 'Canada']
   },
   'cyber-security': {
-    title: 'Cyber Security Industry',
+    title: 'Cyber Security',
     icon: '🛡️',
     images: [
-      'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1600&q=85',
-      'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=1600&q=85',
+      'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1600&q=85'
     ],
-    overview: 'As digital threats escalate globally, cyber security professionals are among the most sought-after talent in the world. Millinoxx Experts places certified cybersecurity experts with enterprises, government bodies, defense organizations, and technology companies worldwide.',
-    roles: ['Chief Information Security Officer (CISO)', 'Penetration Testers / Ethical Hackers', 'Security Operations Center (SOC) Analysts', 'Incident Response Engineers', 'Cloud Security Engineers', 'Identity & Access Management (IAM) Specialists', 'Security Architects', 'Threat Intelligence Analysts', 'Compliance & GRC Managers', 'Cryptography Engineers', 'Malware Analysts', 'Vulnerability Assessment Engineers'],
-    countries: ['USA', 'UK', 'Germany', 'UAE', 'Saudi Arabia', 'Australia', 'Singapore', 'India', 'Canada', 'Israel'],
+    overview: 'As digital threats escalate, robust cyber security is non-negotiable for enterprise stability. Millinoxx Experts places highly certified security professionals who safeguard critical digital assets, networks, and enterprise data infrastructure against global cyber threats.',
+    services: [
+      'Security Operations Staffing',
+      'CISO & Leadership Search',
+      'Contract Security Analysts',
+      'Threat Intelligence Teams',
+      'Compliance & Audit Staffing',
+      'Red/Blue Team Recruitment'
+    ],
+    roles: [
+      'Security Operations Center (SOC) Analysts',
+      'Penetration Testers (Ethical Hackers)',
+      'Security Architects',
+      'Incident Response Engineers',
+      'Cloud Security Engineers',
+      'Chief Information Security Officers (CISO)'
+    ],
+    statistics: [
+      { value: '300+', label: 'Security Pros' },
+      { value: '100%', label: 'Certified Talent' },
+      { value: '24/7', label: 'SOC Deployment' },
+      { value: '12+', label: 'Countries' }
+    ],
+    countries: ['USA', 'UK', 'UAE', 'Saudi Arabia', 'Australia', 'India', 'Germany']
   },
+  'telecom': {
+    title: 'Telecommunications',
+    icon: '📡',
+    images: [
+      'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1600&q=85'
+    ],
+    overview: 'The Telecom sector forms the backbone of global connectivity. We supply highly specialized experts in 5G, fiber optics, network architecture, and communications infrastructure to leading telecom operators and OEMs worldwide.',
+    services: [
+      'Telecom Network Staffing',
+      '5G Rollout Project Teams',
+      'Field Engineering Outsourcing',
+      'Telecom Leadership Search',
+      'Network Maintenance Staffing',
+      'Contract RF Engineers'
+    ],
+    roles: [
+      'Network Architects',
+      'RF Engineers',
+      '5G Specialists',
+      'Telecom Project Managers',
+      'Transmission Engineers',
+      'Field Service Technicians'
+    ],
+    statistics: [
+      { value: '1000+', label: 'Engineers Deployed' },
+      { value: '5G', label: 'Rollout Experts' },
+      { value: '95%', label: 'Client Retention' },
+      { value: '20+', label: 'Global Markets' }
+    ],
+    countries: ['Saudi Arabia', 'UAE', 'UK', 'Germany', 'USA', 'India', 'Oman']
+  },
+  'healthcare': {
+    title: 'Healthcare and Medical',
+    icon: '🏥',
+    images: [
+      'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1600&q=85'
+    ],
+    overview: 'Healthcare is a mission-critical sector requiring certified professionals with uncompromising standards. Millinoxx Experts specializes in recruiting medical, paramedical, nursing, and allied health professionals for hospitals, clinics, and healthcare systems across the globe.',
+    services: [
+      'International Medical Recruitment',
+      'Nursing Staff Augmentation',
+      'Allied Health Placement',
+      'Hospital Administration Search',
+      'Locum Tenens Staffing',
+      'Healthcare Compliance Resourcing'
+    ],
+    roles: [
+      'Specialist Physicians & Surgeons',
+      'Registered Nurses (ICU, ER, OR)',
+      'Paramedics & EMTs',
+      'Pharmacists & Radiologists',
+      'Medical Lab Technicians',
+      'Healthcare Administrators'
+    ],
+    statistics: [
+      { value: '2000+', label: 'Medics Deployed' },
+      { value: '100%', label: 'Verified Licensing' },
+      { value: '98%', label: 'Placement Success' },
+      { value: '15+', label: 'Countries' }
+    ],
+    countries: ['Saudi Arabia', 'UAE', 'Qatar', 'UK', 'Canada', 'Australia', 'Germany', 'Kuwait']
+  },
+  'oil-gas': {
+    title: 'Oil and Gas',
+    icon: '🛢️',
+    images: [
+      'https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=1600&q=85'
+    ],
+    overview: 'The Oil & Gas industry demands rigorous safety standards and deep technical expertise. We have extensive experience sourcing certified professionals for upstream, midstream, and downstream operations in some of the most challenging environments on earth.',
+    services: [
+      'Upstream/Downstream Staffing',
+      'Rig & Offshore Recruitment',
+      'Turnaround & Shutdown Staffing',
+      'Technical Manpower Supply',
+      'HSE Professional Search',
+      'Project Management Teams'
+    ],
+    roles: [
+      'Petroleum & Drilling Engineers',
+      'Process Engineers',
+      'Refinery Operators',
+      'HSE Managers & Safety Officers',
+      'Piping & Pipeline Engineers',
+      'NDT Inspectors'
+    ],
+    statistics: [
+      { value: '5000+', label: 'Professionals Placed' },
+      { value: 'Zero', label: 'Compliance Issues' },
+      { value: '25+', label: 'Major EPC Clients' },
+      { value: '20+', label: 'Countries Served' }
+    ],
+    countries: ['Saudi Arabia', 'UAE', 'Kuwait', 'Oman', 'Qatar', 'Iraq', 'Bahrain', 'Nigeria', 'UK', 'Norway']
+  },
+  'petrochemicals': {
+    title: 'Petrochemicals',
+    icon: '⚗️',
+    images: [
+      'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=1600&q=85'
+    ],
+    overview: 'Petrochemical facilities operate at the highest levels of complexity. We supply the specialized engineering, process, and maintenance talent required to keep plants running efficiently, safely, and profitably.',
+    services: [
+      'Plant Operations Staffing',
+      'Chemical Engineering Search',
+      'Maintenance & Reliability Teams',
+      'Quality Control Recruitment',
+      'Process Optimization Experts',
+      'Shutdown Manpower Supply'
+    ],
+    roles: [
+      'Chemical Engineers',
+      'Process Technologists',
+      'Plant Managers',
+      'Reliability Engineers',
+      'Quality Assurance Inspectors',
+      'Control Room Operators'
+    ],
+    statistics: [
+      { value: '1500+', label: 'Experts Deployed' },
+      { value: '99%', label: 'Safety Record' },
+      { value: '48h', label: 'Response Time' },
+      { value: '12+', label: 'Countries' }
+    ],
+    countries: ['Saudi Arabia', 'UAE', 'Qatar', 'Oman', 'India', 'Germany', 'USA']
+  },
+  'engineering-epc': {
+    title: 'Engineering and EPC',
+    icon: '🏗️',
+    images: [
+      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=85'
+    ],
+    overview: 'Engineering, Procurement, and Construction (EPC) projects form the backbone of global infrastructure. We provide multi-disciplinary engineering talent capable of executing mega-projects safely, on time, and within budget.',
+    services: [
+      'Turnkey EPC Project Staffing',
+      'Multi-disciplinary Engineering Teams',
+      'Project Management Recruitment',
+      'Procurement & Supply Chain Staffing',
+      'Commissioning Teams',
+      'Contract Engineering Supply'
+    ],
+    roles: [
+      'Project Managers & Directors',
+      'Civil & Structural Engineers',
+      'Mechanical & Electrical Engineers',
+      'Planning & Cost Control Engineers',
+      'Procurement Managers',
+      'Commissioning Managers'
+    ],
+    statistics: [
+      { value: '3000+', label: 'Engineers Placed' },
+      { value: '100+', label: 'Mega Projects' },
+      { value: '98%', label: 'Retention' },
+      { value: '18+', label: 'Global Markets' }
+    ],
+    countries: ['UAE', 'Saudi Arabia', 'Qatar', 'Kuwait', 'Oman', 'India', 'UK', 'Australia']
+  },
+  'manufacturing': {
+    title: 'Manufacturing',
+    icon: '🏭',
+    images: [
+      'https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?w=1600&q=85'
+    ],
+    overview: 'Manufacturing is the engine of the industrial economy. Millinoxx Experts supplies skilled, semi-skilled, and leadership manpower for production, quality, maintenance, and engineering functions across all manufacturing sub-sectors.',
+    services: [
+      'Production Line Staffing',
+      'Plant Management Search',
+      'Industrial Engineering Teams',
+      'Quality Control Recruitment',
+      'Lean Manufacturing Experts',
+      'Supply Chain & Logistics Staffing'
+    ],
+    roles: [
+      'Production Managers',
+      'Manufacturing Engineers',
+      'Quality Assurance Engineers',
+      'CNC Programmers & Operators',
+      'Industrial Electricians',
+      'Supply Chain Analysts'
+    ],
+    statistics: [
+      { value: '4000+', label: 'Placements' },
+      { value: 'Lean', label: 'Trained Experts' },
+      { value: '96%', label: 'Client Satisfaction' },
+      { value: '15+', label: 'Countries' }
+    ],
+    countries: ['Germany', 'USA', 'Malaysia', 'Singapore', 'Saudi Arabia', 'UAE', 'UK', 'India']
+  },
+  'power-plant': {
+    title: 'Power Plant',
+    icon: '⚡',
+    images: [
+      'https://images.unsplash.com/photo-1548669985-9ef9d7b76e23?w=1600&q=85'
+    ],
+    overview: 'The Power sector encompasses thermal, hydro, solar, and nuclear power plants. We provide the specialized engineering and operational manpower required to keep critical energy infrastructure running safely and at peak performance.',
+    services: [
+      'Power Plant Operations Staffing',
+      'Maintenance & Outage Resourcing',
+      'Renewable Energy Recruitment',
+      'Grid Modernization Teams',
+      'Safety & Compliance Staffing',
+      'Commissioning Experts'
+    ],
+    roles: [
+      'Power Plant Engineers',
+      'Turbine & Boiler Technicians',
+      'Instrumentation & Control Engineers',
+      'Control Room Operators',
+      'Maintenance Supervisors',
+      'SCADA Specialists'
+    ],
+    statistics: [
+      { value: '1200+', label: 'Power Pros' },
+      { value: '10GW+', label: 'Projects Supported' },
+      { value: '100%', label: 'Safety Compliance' },
+      { value: '14+', label: 'Countries' }
+    ],
+    countries: ['Saudi Arabia', 'UAE', 'Kuwait', 'Oman', 'Qatar', 'UK', 'Germany', 'India']
+  },
+  'water-treatment': {
+    title: 'Water Treatment',
+    icon: '💧',
+    images: [
+      'https://images.unsplash.com/photo-1582455986986-1d1cb535ce9a?w=1600&q=85'
+    ],
+    overview: 'Water and wastewater management is critical for global sustainability. We recruit specialized professionals for desalination plants, sewage treatment facilities, and civic water infrastructure projects.',
+    services: [
+      'Desalination Plant Staffing',
+      'Wastewater Treatment Recruitment',
+      'Environmental Engineering Teams',
+      'Plant Operations & Maintenance',
+      'Water Process Optimization',
+      'Project Management Search'
+    ],
+    roles: [
+      'Water Treatment Engineers',
+      'Process Engineers',
+      'Environmental Scientists',
+      'RO Plant Operators',
+      'Hydraulic Engineers',
+      'Maintenance Technicians'
+    ],
+    statistics: [
+      { value: '800+', label: 'Experts Placed' },
+      { value: '50+', label: 'Plant Projects' },
+      { value: '98%', label: 'Retention' },
+      { value: '10+', label: 'Countries' }
+    ],
+    countries: ['UAE', 'Saudi Arabia', 'Oman', 'Qatar', 'India', 'Australia', 'UK']
+  },
+  'mep-hvac': {
+    title: 'MEP and HVAC',
+    icon: '🔧',
+    images: [
+      'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1600&q=85'
+    ],
+    overview: 'Mechanical, Electrical, and Plumbing (MEP) engineering brings buildings to life. We provide expert MEP professionals for construction, maintenance, and commissioning projects spanning commercial towers to industrial complexes.',
+    services: [
+      'MEP Project Staffing',
+      'HVAC Installation & Maintenance Teams',
+      'BIM Modeling Recruitment',
+      'Facility Management Staffing',
+      'Electrical Engineering Search',
+      'Plumbing & Fire Safety Teams'
+    ],
+    roles: [
+      'MEP Coordinators & Managers',
+      'HVAC Engineers & Chiller Technicians',
+      'Electrical & Plumbing Engineers',
+      'BIM Engineers & Draftsmen',
+      'Fire Safety Engineers',
+      'BMS Operators'
+    ],
+    statistics: [
+      { value: '2500+', label: 'MEP Experts' },
+      { value: '300+', label: 'Commercial Projects' },
+      { value: '95%', label: 'Client Satisfaction' },
+      { value: '12+', label: 'Countries' }
+    ],
+    countries: ['UAE', 'Saudi Arabia', 'Qatar', 'Kuwait', 'Bahrain', 'Oman', 'UK', 'Singapore']
+  },
+  'construction': {
+    title: 'Construction and Real Estate',
+    icon: '🏗️',
+    images: [
+      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=85'
+    ],
+    overview: 'From mega infrastructure developments to luxury residential real estate, Millinoxx Experts sources the skilled professionals needed to bring ambitious architectural projects to life on time and within budget.',
+    services: [
+      'Construction Management Recruitment',
+      'Site Engineering Staffing',
+      'Skilled Trades & Labor Supply',
+      'Real Estate Development Search',
+      'Quantity Surveying Teams',
+      'Health & Safety Staffing'
+    ],
+    roles: [
+      'Construction Managers',
+      'Civil & Structural Engineers',
+      'Architects & Urban Planners',
+      'Quantity Surveyors',
+      'Site Supervisors & Foremen',
+      'HSE Officers'
+    ],
+    statistics: [
+      { value: '6000+', label: 'Placements' },
+      { value: '1M+', label: 'Man-hours Supported' },
+      { value: '99%', label: 'Safety Record' },
+      { value: '15+', label: 'Countries' }
+    ],
+    countries: ['UAE', 'Saudi Arabia', 'Qatar', 'UK', 'Germany', 'Australia', 'Singapore', 'India']
+  },
+  'heavy-equipment': {
+    title: 'Heavy Equipment',
+    icon: '🚜',
+    images: [
+      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=85'
+    ],
+    overview: 'The Heavy Equipment sector requires specialized operators, mechanics, and logistics experts. We provide highly skilled professionals to manage, operate, and maintain industrial machinery across global mega-projects.',
+    services: [
+      'Heavy Machinery Operator Supply',
+      'Equipment Maintenance Recruitment',
+      'Logistics & Transport Staffing',
+      'Fleet Management Search',
+      'Hydraulic Engineering Teams',
+      'Safety & Compliance Resourcing'
+    ],
+    roles: [
+      'Crane & Excavator Operators',
+      'Heavy Duty Diesel Mechanics',
+      'Hydraulic Engineers',
+      'Fleet Managers',
+      'Riggers & Slingers',
+      'Heavy Equipment Supervisors'
+    ],
+    statistics: [
+      { value: '3500+', label: 'Operators Deployed' },
+      { value: '100%', label: 'Certified Staff' },
+      { value: '97%', label: 'Client Retention' },
+      { value: '12+', label: 'Countries' }
+    ],
+    countries: ['Saudi Arabia', 'UAE', 'Qatar', 'Russia', 'Australia', 'Canada', 'India']
+  },
+  'shipping-marine': {
+    title: 'Shipping and Marine',
+    icon: '⚓',
+    images: [
+      'https://images.unsplash.com/photo-1494587351196-bbf5f29cff42?w=1600&q=85'
+    ],
+    overview: 'The shipping and marine industry moves global trade. Millinoxx Experts provides qualified maritime professionals—from deck officers to marine engineers—for vessels, ports, shipyards, and offshore facilities worldwide.',
+    services: [
+      'Maritime Crewing Services',
+      'Port Operations Staffing',
+      'Shipyard Engineering Recruitment',
+      'Offshore Platform Resourcing',
+      'Marine Logistics Staffing',
+      'Naval Architecture Search'
+    ],
+    roles: [
+      'Marine Engineers & Deck Officers',
+      'Ship Captains & Nautical Officers',
+      'Port Managers',
+      'Shipyard Engineers',
+      'Naval Architects',
+      'Marine Electricians & Mechanics'
+    ],
+    statistics: [
+      { value: '1500+', label: 'Marine Pros' },
+      { value: 'STCW', label: 'Certified' },
+      { value: '98%', label: 'Retention' },
+      { value: '15+', label: 'Countries' }
+    ],
+    countries: ['Singapore', 'UAE', 'UK', 'Norway', 'Greece', 'Malaysia', 'India', 'Japan']
+  },
+  'aviation-aerospace': {
+    title: 'Aviation and Aerospace',
+    icon: '✈️',
+    images: [
+      'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1600&q=85'
+    ],
+    overview: 'Aviation demands the absolute highest standards of technical precision and safety. We place qualified aviation professionals with airlines, MROs, airports, and aerospace OEMs globally.',
+    services: [
+      'MRO & Technical Staffing',
+      'Flight Operations Recruitment',
+      'Aerospace Engineering Teams',
+      'Airport Ground Staffing',
+      'Aviation Leadership Search',
+      'Quality & Compliance Resourcing'
+    ],
+    roles: [
+      'Aircraft Maintenance Engineers (AME)',
+      'Avionics Technicians',
+      'Aerospace Engineers',
+      'Pilots & Air Traffic Controllers',
+      'Quality Assurance Inspectors',
+      'Flight Operations Officers'
+    ],
+    statistics: [
+      { value: '1000+', label: 'Aviation Pros' },
+      { value: 'EASA/FAA', label: 'Certified Staff' },
+      { value: '100%', label: 'Safety Record' },
+      { value: '12+', label: 'Countries' }
+    ],
+    countries: ['UAE', 'Saudi Arabia', 'Qatar', 'UK', 'Germany', 'Singapore', 'USA', 'India']
+  },
+  'banking-finance': {
+    title: 'Banking and Finance',
+    icon: '💰',
+    images: [
+      'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1600&q=85'
+    ],
+    overview: 'Banking and finance require precision, compliance, and deep domain expertise. We recruit highly qualified financial professionals for global banks, investment firms, insurance companies, and fintech startups.',
+    services: [
+      'Investment Banking Recruitment',
+      'Risk & Compliance Staffing',
+      'Fintech Development Teams',
+      'Executive Search for Finance',
+      'Accounting & Audit Resourcing',
+      'Wealth Management Staffing'
+    ],
+    roles: [
+      'Investment Bankers',
+      'Financial Analysts & Modellers',
+      'Risk Managers & Compliance Officers',
+      'Chartered Accountants',
+      'Fintech Developers',
+      'Portfolio & Wealth Managers'
+    ],
+    statistics: [
+      { value: '1200+', label: 'Finance Pros' },
+      { value: 'CFA/CPA', label: 'Certified Talent' },
+      { value: '96%', label: 'Client Satisfaction' },
+      { value: '14+', label: 'Global Financial Hubs' }
+    ],
+    countries: ['UAE', 'Saudi Arabia', 'UK', 'Singapore', 'USA', 'Germany', 'Bahrain', 'Luxembourg']
+  },
+  'agriculture': {
+    title: 'Agriculture',
+    icon: '🌾',
+    images: [
+      'https://images.unsplash.com/photo-1500651230702-0e2d8a49d4e6?w=1600&q=85'
+    ],
+    overview: 'Modern agriculture integrates technology and sustainability to feed the world. We provide agri-professionals for large-scale farms, food processing, agricultural research, and agribusiness operations globally.',
+    services: [
+      'Agribusiness Executive Search',
+      'Farm Management Staffing',
+      'Food Processing Recruitment',
+      'Agronomy & Research Teams',
+      'Agricultural Engineering Supply',
+      'Supply Chain Staffing'
+    ],
+    roles: [
+      'Agronomists & Soil Scientists',
+      'Farm Managers',
+      'Agricultural Engineers',
+      'Food Processing Technologists',
+      'Irrigation Engineers',
+      'Agri-Economists'
+    ],
+    statistics: [
+      { value: '800+', label: 'Agri Experts Placed' },
+      { value: '100+', label: 'Mega Farms' },
+      { value: '98%', label: 'Retention' },
+      { value: '15+', label: 'Countries' }
+    ],
+    countries: ['Saudi Arabia', 'UAE', 'Australia', 'New Zealand', 'UK', 'Canada', 'India', 'South Africa']
+  },
+  'fmcg-garments': {
+    title: 'FMCG and Garments',
+    icon: '🛒',
+    images: [
+      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=85'
+    ],
+    overview: 'The FMCG and garments sectors require highly specialized talent in design, production, retail, and complex global supply chains. Millinoxx Experts connects manufacturers and retail brands with skilled industry professionals.',
+    services: [
+      'Production & Manufacturing Staffing',
+      'Supply Chain & Logistics Recruitment',
+      'Retail Operations Staffing',
+      'Fashion & Apparel Search',
+      'FMCG Brand Management Teams',
+      'Quality Control Resourcing'
+    ],
+    roles: [
+      'Production & Plant Managers',
+      'Supply Chain Analysts',
+      'FMCG Brand Managers',
+      'Garment Technologists',
+      'Quality Control Managers',
+      'Retail Operations Leaders'
+    ],
+    statistics: [
+      { value: '2500+', label: 'Professionals' },
+      { value: '50+', label: 'Global Brands' },
+      { value: '97%', label: 'Satisfaction' },
+      { value: '18+', label: 'Countries' }
+    ],
+    countries: ['Bangladesh', 'India', 'UAE', 'UK', 'Germany', 'Malaysia', 'Singapore', 'USA']
+  }
 }
 
 export default industryData
