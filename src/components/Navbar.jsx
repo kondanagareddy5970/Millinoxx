@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, ChevronDown } from 'lucide-react'
 import { FaFacebookF, FaLinkedinIn } from 'react-icons/fa'
 import logoImg from '../assets/logo.jpeg'
 
@@ -59,51 +59,75 @@ const navLinks = [
   },
 ]
 
+/** Clears the googtrans cookie and reloads to restore English */
+function restoreEnglish() {
+  const host = window.location.hostname
+  const expires = 'expires=Thu, 01 Jan 1970 00:00:00 UTC'
+  document.cookie = `googtrans=; ${expires}; path=/`
+  document.cookie = `googtrans=; ${expires}; path=/; domain=.${host}`
+  document.cookie = `googtrans=; ${expires}; path=/; domain=${host}`
+  window.location.reload()
+}
+
+/**
+ * Watches the <html> element for the class "translated-ltr" or "translated-rtl"
+ * that Google Translate adds when a translation is active.
+ */
+function useIsTranslated() {
+  const [translated, setTranslated] = useState(false)
+
+  useEffect(() => {
+    const check = () => {
+      const cl = document.documentElement.classList
+      setTranslated(cl.contains('translated-ltr') || cl.contains('translated-rtl'))
+    }
+    check()
+    const obs = new MutationObserver(check)
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
+    // Fallback poll
+    const id = setInterval(check, 1000)
+    return () => { obs.disconnect(); clearInterval(id) }
+  }, [])
+
+  return translated
+}
+
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [activeDropdown, setActiveDropdown] = useState(null)
   const [mobileExpanded, setMobileExpanded] = useState(null)
   const location = useLocation()
   const navRef = useRef(null)
+  const isTranslated = useIsTranslated()
 
-  // Close everything on route change
   useEffect(() => {
     setMobileOpen(false)
-    setActiveDropdown(null)
     setMobileExpanded(null)
   }, [location.pathname])
-
-  // Close dropdown when clicking outside the navbar
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (navRef.current && !navRef.current.contains(e.target)) {
-        setActiveDropdown(null)
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [])
 
   const isActive = (path) => location.pathname === path
   const isParentActive = (dropdown) => dropdown?.some(d => location.pathname === d.path)
 
   return (
     <>
-      {/* Fixed wrapper */}
-      <div ref={navRef} className="fixed top-0 left-0 right-0 z-50">
-        {/* Main Navbar */}
-        <nav className="bg-[#004b75] border-b border-white/10 py-3.5 shadow-lg">
+      {/* ── Fixed Navbar wrapper ──────────────────────────────────────── */}
+      <div ref={navRef} className="fixed top-0 left-0 right-0 z-50" style={{ overflow: 'visible' }}>
+        <nav className="bg-[#004b75] border-b border-white/10 py-3.5 shadow-lg" style={{ overflow: 'visible' }}>
           <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+
             {/* Logo */}
             <Link to="/" className="flex items-center flex-shrink-0 group">
-              <img src={logoImg} alt="Millinoxx Engineering & Technology" className="h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-300" />
+              <img
+                src={logoImg}
+                alt="Millinoxx Engineering & Technology"
+                className="h-16 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+              />
             </Link>
 
-            {/* Desktop Nav */}
-            <div className="hidden lg:flex items-center gap-5">
+            {/* ── Desktop Nav ─────────────────────────────────────────── */}
+            <div className="hidden lg:flex items-center gap-5" style={{ overflow: 'visible' }}>
               {navLinks.map((link) =>
                 link.dropdown ? (
-                  <div key={link.label} className="relative group py-2">
+                  <div key={link.label} className="relative group py-2" style={{ overflow: 'visible' }}>
                     <button
                       className={`flex items-center gap-1 px-2.5 py-1 text-sm font-medium transition-colors duration-200 hover:text-gold
                         ${isParentActive(link.dropdown) ? 'text-gold' : 'text-white'}`}
@@ -112,7 +136,7 @@ export default function Navbar() {
                     </button>
 
                     {/* Dropdown panel */}
-                    <div className={`absolute top-full pt-2 z-[200] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-out
+                    <div className={`absolute top-full pt-2 z-[9000] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-out
                       ${link.label === 'Industries We Serve' ? 'left-1/2 -translate-x-1/2 w-[620px]' : 'left-0 min-w-[270px]'}`}>
                       <div className={`bg-white shadow-2xl rounded-lg border border-gray-100 max-h-[75vh] overflow-y-auto py-2
                         ${link.label === 'Industries We Serve' ? 'grid grid-cols-2 gap-x-2 p-3' : ''}`}>
@@ -142,17 +166,34 @@ export default function Navbar() {
                 )
               )}
 
-              <Link to="/contact" className="ml-3 bg-gold hover:bg-yellow-500 text-navy text-xs font-bold px-4 py-2 rounded-sm transition-all duration-200 shadow-md hover:shadow-lg whitespace-nowrap">
+              <Link
+                to="/contact"
+                className="ml-2 bg-gold hover:bg-yellow-500 text-navy text-xs font-bold px-4 py-2 rounded-sm transition-all duration-200 shadow-md hover:shadow-lg whitespace-nowrap"
+              >
                 Get In Touch
               </Link>
 
-              {/* Translate Element */}
-              <div className="ml-2 flex items-center">
-                <div id="google_translate_element" className="scale-90 origin-right" />
+              {/* ── Google Translate widget + restore button ─────────── */}
+              <div className="ml-2 flex items-center gap-1.5" style={{ overflow: 'visible' }}>
+                {/* Native Google Translate SIMPLE widget */}
+                <div id="google_translate_element" style={{ overflow: 'visible', display: 'inline-block', verticalAlign: 'middle' }} />
+
+                {/* "↩ English" restore button — only visible when page is translated */}
+                {isTranslated && (
+                  <button
+                    onClick={restoreEnglish}
+                    title="Restore original English"
+                    className="flex items-center gap-1 px-2.5 py-1.5 rounded text-xs font-semibold
+                      bg-white/15 hover:bg-white/30 border border-white/25 hover:border-white/50
+                      text-white transition-all duration-200 whitespace-nowrap"
+                  >
+                    ↩ English
+                  </button>
+                )}
               </div>
 
               {/* Social links */}
-              <div className="flex items-center gap-2 ml-3 border-l border-white/20 pl-4">
+              <div className="flex items-center gap-2 border-l border-white/20 pl-4">
                 <a href="https://www.facebook.com/people/Millinoxx-Pvt-Ltd/61579129431567/" target="_blank" rel="noopener noreferrer"
                   className="w-7 h-7 rounded bg-white hover:bg-gold flex items-center justify-center transition-colors duration-200">
                   <FaFacebookF size={12} className="text-[#004b75]" />
@@ -164,10 +205,21 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* Mobile Hamburger */}
-            {/* Mobile Actions */}
+            {/* ── Mobile top-bar ───────────────────────────────────────── */}
             <div className="flex lg:hidden items-center gap-2">
-              <div id="google_translate_element_mobile" className="scale-75 origin-right" />
+              {/* Google Translate widget (smaller) */}
+              <div id="google_translate_element_mobile_dummy" style={{ display: 'none' }} />
+              <div className="scale-90 origin-right" style={{ overflow: 'visible' }}>
+                <div id="google_translate_element_mob" />
+              </div>
+              {isTranslated && (
+                <button
+                  onClick={restoreEnglish}
+                  className="text-white text-xs font-semibold px-2 py-1 rounded bg-white/15 border border-white/25 whitespace-nowrap"
+                >
+                  ↩ EN
+                </button>
+              )}
               <button
                 onClick={() => setMobileOpen(true)}
                 className="p-2 text-white hover:text-gold transition-colors"
@@ -180,19 +232,21 @@ export default function Navbar() {
         </nav>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* ── Mobile Drawer ──────────────────────────────────────────────── */}
       {mobileOpen && (
         <div className="fixed inset-0 z-[200] flex">
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
-          <div className="relative w-80 max-w-[85vw] bg-white h-full overflow-y-auto shadow-2xl" style={{ animation: 'slideIn 0.3s ease forwards' }}>
+          <div
+            className="relative w-80 max-w-[85vw] bg-white h-full overflow-y-auto shadow-2xl"
+            style={{ animation: 'slideIn 0.3s ease forwards' }}
+          >
             <div className="p-5 border-b border-gray-100 flex items-center justify-between bg-[#004b75]">
-              <div className="flex items-center text-white">
-                <img src={logoImg} alt="Millinoxx Logo" className="h-8 w-auto object-contain" />
-              </div>
+              <img src={logoImg} alt="Millinoxx Logo" className="h-8 w-auto object-contain" />
               <button onClick={() => setMobileOpen(false)}>
                 <X size={22} className="text-white" />
               </button>
             </div>
+
             <nav className="p-4">
               <Link
                 to="/"
@@ -202,6 +256,7 @@ export default function Navbar() {
               >
                 Home
               </Link>
+
               {navLinks.map((link) =>
                 link.dropdown ? (
                   <div key={link.label}>
@@ -211,6 +266,10 @@ export default function Navbar() {
                         ${isParentActive(link.dropdown) ? 'text-yellow-700 bg-amber-50' : 'text-navy hover:bg-gray-50'}`}
                     >
                       {link.label}
+                      <ChevronDown
+                        size={14}
+                        className={`transition-transform duration-200 ${mobileExpanded === link.label ? 'rotate-180' : ''}`}
+                      />
                     </button>
                     {mobileExpanded === link.label && (
                       <div className="ml-4 mb-2 border-l-2 border-gold pl-3">
@@ -219,7 +278,8 @@ export default function Navbar() {
                             key={item.path}
                             to={item.path}
                             onClick={() => setMobileOpen(false)}
-                            className={`block py-2 px-2 text-sm rounded transition-colors ${isActive(item.path) ? 'text-yellow-700 font-semibold' : 'text-gray-500 hover:text-yellow-700'}`}
+                            className={`block py-2 px-2 text-sm rounded transition-colors
+                              ${isActive(item.path) ? 'text-yellow-700 font-semibold' : 'text-gray-500 hover:text-yellow-700'}`}
                           >
                             {item.label}
                           </Link>
@@ -247,6 +307,16 @@ export default function Navbar() {
               >
                 Get In Touch
               </Link>
+
+              {/* Restore English in drawer */}
+              {isTranslated && (
+                <button
+                  onClick={restoreEnglish}
+                  className="mt-3 w-full flex items-center justify-center gap-2 py-2.5 rounded-lg border-2 border-[#004b75] text-[#004b75] text-sm font-bold hover:bg-[#004b75] hover:text-white transition-colors duration-200"
+                >
+                  ↩ Restore Original English
+                </button>
+              )}
 
               <div className="mt-6 flex justify-center gap-4">
                 <a href="https://www.facebook.com/people/Millinoxx-Pvt-Ltd/61579129431567/" target="_blank" rel="noopener noreferrer"

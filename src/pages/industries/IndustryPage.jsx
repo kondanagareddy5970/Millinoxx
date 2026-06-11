@@ -17,14 +17,14 @@ export default function IndustryPage({ slug }) {
     </div>
   )
 
-  const slides = data.images.map(img => ({ image: img }))
+  const slides = data.images.map(img => (typeof img === 'object' ? img : { image: img }))
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
       {/* Hero */}
       <div className="relative">
-        <HeroSlider slides={slides} height="60vh" />
-        <div className="absolute inset-0 flex items-center bg-navy/65">
+        <HeroSlider slides={slides} height="60vh" showOverlay={false} />
+        <div className="absolute inset-0 flex items-center" style={{ background: 'linear-gradient(to right, rgba(10,22,40,0.60) 0%, rgba(10,22,40,0.30) 60%, transparent 100%)' }}>
           <div className="max-w-7xl mx-auto px-6">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
               <span className="text-gold text-sm font-semibold tracking-[0.25em] uppercase block mb-3">Industries We Serve</span>

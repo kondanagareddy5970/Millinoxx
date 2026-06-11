@@ -12,7 +12,7 @@ import {
 import heroRefinery from '../assets/hero-refinery-bright.jpg'
 import heroFuturisticRefinery from '../assets/hero-futuristic-refinery.png'
 import heroGlobalRecruitment from '../assets/hero-global-recruitment.png'
-import heroITServices from '../assets/hero-it-services.png'
+import heroITImage from '../assets/image it.png'
 import heroCyberSecurity from '../assets/hero-cyber-security.png'
 
 const heroSlides = [
@@ -84,7 +84,8 @@ const heroSlides = [
     )
   },
   {
-    image: heroITServices,
+    image: heroITImage,
+    position: 'center 50%',
     content: (
       <div className="max-w-2xl">
         <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
@@ -103,6 +104,7 @@ const heroSlides = [
       </div>
     )
   },
+
   {
     image: heroCyberSecurity,
     content: (

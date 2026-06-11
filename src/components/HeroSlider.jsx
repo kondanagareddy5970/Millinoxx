@@ -41,6 +41,7 @@ export default function HeroSlider({ slides, height = '100vh', showOverlay = tru
           className="absolute inset-0 hero-slide"
           style={{
             backgroundImage: `url(${slide.image})`,
+            backgroundPosition: slide.position || 'center',
             opacity: i === current ? 1 : 0,
             transition: 'opacity 1s ease-in-out',
             zIndex: i === current ? 2 : i === prev ? 1 : 0,

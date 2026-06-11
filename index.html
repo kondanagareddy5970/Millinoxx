@@ -9,84 +9,150 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <script type="text/javascript">
-      function googleTranslateElementInit() {
-        const init = () => {
-          const el = document.getElementById('google_translate_element');
-          const elMobile = document.getElementById('google_translate_element_mobile');
-          
-          if (el) {
-            new google.translate.TranslateElement({
-              pageLanguage: 'en',
-              includedLanguages: 'ar,zh-CN,fr,de,hi,ml,ru,es,ta,te',
-              layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-              autoDisplay: false
-            }, 'google_translate_element');
-          }
-          
-          if (elMobile) {
-            new google.translate.TranslateElement({
-              pageLanguage: 'en',
-              includedLanguages: 'ar,zh-CN,fr,de,hi,ml,ru,es,ta,te',
-              layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-              autoDisplay: false
-            }, 'google_translate_element_mobile');
-          }
 
-          if (!el && !elMobile) {
-            setTimeout(init, 100);
-          }
-        };
-        init();
-      }
-    </script>
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <style>
       html { scroll-behavior: smooth; }
       body { font-family: 'Inter', sans-serif; }
-      /* Hide the floating Google top bar and restore body position */
-      .goog-te-banner-frame.skiptranslate,
-      .goog-te-banner-frame { display: none !important; }
-      body { top: 0 !important; }
-      
-      /* Style the Google Translate Simple Widget to look like a premium white dropdown */
+
+      /* ── Kill Google's injected top bar ───────────────────────────── */
+      #goog-gt-tt,
+      .goog-te-balloon-frame,
+      .goog-te-banner-frame,
+      .goog-te-banner-frame.skiptranslate {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        max-height: 0 !important;
+        border: none !important;
+      }
+
+      /* ── Never let Google push body down with top:-40px ─────────── */
+      body {
+        top: 0px !important;
+        position: static !important;
+        margin-top: 0 !important;
+      }
+      html.translated-ltr body,
+      html.translated-rtl body {
+        top: 0px !important;
+        margin-top: 0 !important;
+      }
+
+      /* ── Google Translate SIMPLE widget styling ───────────────────── */
       .goog-te-gadget-simple {
         background-color: #ffffff !important;
-        border: 1px solid #ffffff !important;
-        padding: 3px 8px !important;
+        border: 1px solid rgba(255,255,255,0.35) !important;
+        padding: 5px 9px !important;
         border-radius: 4px !important;
         display: inline-flex !important;
         align-items: center !important;
         cursor: pointer !important;
-        gap: 6px !important;
+        gap: 5px !important;
         font-family: 'Inter', sans-serif !important;
         text-decoration: none !important;
+        white-space: nowrap !important;
+        vertical-align: middle !important;
+        line-height: 1 !important;
       }
-      
-      /* Style spans inside the simple widget */
-      .goog-te-gadget-simple span {
+      .goog-te-gadget-simple span,
+      .goog-te-gadget-simple a,
+      .goog-te-gadget-simple a span {
         color: #0A1628 !important;
         font-size: 12px !important;
-        font-weight: 500 !important;
+        font-weight: 600 !important;
         font-family: 'Inter', sans-serif !important;
         text-decoration: none !important;
-        display: inline-block !important;
+        border: none !important;
+        outline: none !important;
+        white-space: nowrap !important;
+        display: inline !important;
         vertical-align: middle !important;
       }
-      
-      /* Clean up borders and icons inside simple widget */
       .goog-te-gadget-simple img {
         display: inline-block !important;
         vertical-align: middle !important;
+        width: 16px !important;
+        height: 11px !important;
       }
-      
-      /* Style the popup translation menu/frame */
-      .goog-te-menu-frame {
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+      .goog-te-gadget-simple a { border-bottom: none !important; }
+      .goog-te-gadget .goog-te-gadget-icon { display: none !important; }
+
+      /* ── Language picker IFRAME: always on top, never clipped ────── */
+      .goog-te-menu-frame,
+      iframe.goog-te-menu-frame {
+        position: fixed !important;
+        z-index: 2147483647 !important;
+        top: 72px !important;
+        right: 10px !important;
+        left: auto !important;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.25) !important;
         border: 1px solid #e2e8f0 !important;
-        border-radius: 8px !important;
+        border-radius: 10px !important;
+        max-height: calc(100vh - 80px) !important;
+        overflow-y: auto !important;
+        min-width: 220px !important;
+      }
+
+      /* ── Translate element containers ────────────────────────────── */
+      #google_translate_element {
+        display: inline-flex !important;
+        align-items: center !important;
+        white-space: nowrap !important;
+        overflow: visible !important;
+        vertical-align: middle !important;
       }
     </style>
+
+    <!-- Google Translate: SIMPLE layout with all languages -->
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        var tryInit = function() {
+          var el = document.getElementById('google_translate_element');
+          if (!el) { setTimeout(tryInit, 150); return; }
+          new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            includedLanguages: 'ar,zh-CN,fr,de,hi,ml,ru,es,ta,te',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false,
+            multilanguagePage: false
+          }, 'google_translate_element');
+        };
+        tryInit();
+      }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async defer></script>
+
+    <!-- MutationObserver: force body top:0 every time Google sets it to -40px -->
+    <script>
+      (function () {
+        function fixBody() {
+          if (document.body && document.body.style.top && document.body.style.top !== '0px') {
+            document.body.style.setProperty('top', '0px', 'important');
+          }
+          // Hide any injected banner iframes
+          document.querySelectorAll('.goog-te-banner-frame').forEach(function(el) {
+            el.style.setProperty('display', 'none', 'important');
+            el.style.setProperty('height', '0', 'important');
+          });
+        }
+
+        function startWatcher() {
+          if (!document.body) { setTimeout(startWatcher, 50); return; }
+          // Watch body style attribute
+          new MutationObserver(function(ms) {
+            ms.forEach(function(m) {
+              if (m.attributeName === 'style') fixBody();
+            });
+          }).observe(document.body, { attributes: true, attributeFilter: ['style'] });
+          // Watch DOM for new iframes Google injects
+          new MutationObserver(fixBody)
+            .observe(document.body, { childList: true, subtree: false });
+        }
+        startWatcher();
+        // Belt-and-suspenders every 800ms
+        setInterval(fixBody, 800);
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
