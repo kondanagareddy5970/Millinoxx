@@ -4,8 +4,7 @@ import HeroSlider from '../../components/HeroSlider'
 import { CheckCircle, Clock, Shield, Wrench, ArrowRight, AlertTriangle, Activity } from 'lucide-react'
 
 const slides = [
-  { image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1600&q=85' },
-  { image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=85' },
+  { image: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1920&h=800&q=80&crop=entropy' }
 ]
 
 const valueAdded = [

@@ -4,8 +4,7 @@ import HeroSlider from '../../components/HeroSlider'
 import { CheckCircle, ArrowRight, RefreshCw, BarChart, UserCheck, Building } from 'lucide-react'
 
 const slides = [
-  { image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1600&q=85' },
-  { image: 'https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?w=1600&q=85' },
+  { image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1920&h=800&q=80&crop=entropy' }
 ]
 
 const valueAdded = [

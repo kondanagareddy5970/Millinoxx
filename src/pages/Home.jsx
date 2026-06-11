@@ -218,18 +218,12 @@ export default function Home() {
               >
                 <Link
                   to={ind.path}
-                  className={`group flex flex-col items-center justify-center p-5 rounded-xl transition-all duration-300 hover:-translate-y-1 h-full min-h-[140px] relative overflow-hidden
-                    ${ind.prominent 
-                      ? 'bg-navy shadow-lg hover:shadow-2xl border border-navy' 
-                      : 'bg-white shadow-sm hover:shadow-xl border border-transparent hover:border-gold/30'}`}
+                  className="group flex flex-col items-center justify-center p-5 rounded-xl transition-all duration-300 hover:-translate-y-1 h-full min-h-[140px] relative overflow-hidden bg-white shadow-sm hover:shadow-xl border border-transparent hover:border-gold/30"
                 >
-                  {ind.prominent && <div className="absolute top-0 right-0 w-16 h-16 bg-gold opacity-10 rounded-bl-full" />}
-                  <div className={`w-14 h-14 rounded-full flex items-center justify-center transition-colors duration-300 mb-3 shrink-0 relative z-10
-                    ${ind.prominent ? 'bg-white/10 group-hover:bg-gold/20' : 'bg-lightbg group-hover:bg-gold/10'}`}>
-                    <ind.icon size={26} className={`transition-colors duration-300 ${ind.prominent ? 'text-gold group-hover:text-white' : 'text-navy group-hover:text-gold'}`} />
+                  <div className="w-14 h-14 rounded-full flex items-center justify-center transition-colors duration-300 mb-3 shrink-0 relative z-10 bg-lightbg group-hover:bg-gold/10">
+                    <ind.icon size={26} className="transition-colors duration-300 text-navy group-hover:text-gold" />
                   </div>
-                  <span className={`text-xs font-semibold text-center leading-snug transition-colors duration-300 relative z-10
-                    ${ind.prominent ? 'text-white group-hover:text-gold' : 'text-navy group-hover:text-gold'}`}>
+                  <span className="text-xs font-semibold text-center leading-snug transition-colors duration-300 relative z-10 text-navy group-hover:text-gold">
                     {ind.label}
                   </span>
                 </Link>

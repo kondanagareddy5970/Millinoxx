@@ -4,8 +4,7 @@ import HeroSlider from '../../components/HeroSlider'
 import { CheckCircle, MapPin, Search, Database, ArrowRight, Users, Briefcase } from 'lucide-react'
 
 const slides = [
-  { image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1600&q=85' },
-  { image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1600&q=85' },
+  { image: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=1920&h=800&q=80&crop=entropy' }
 ]
 
 const valueAdded = [

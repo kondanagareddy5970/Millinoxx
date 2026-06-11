@@ -3,7 +3,7 @@ const industryData = {
     title: 'Information Technology',
     icon: '💻',
     images: [
-      'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&q=85'
+      'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&h=800&q=80&crop=entropy'
     ],
     overview: 'The IT sector is the driving force behind modern global connectivity and digital transformation. Millinoxx Experts provides top-tier IT professionals to software companies, enterprise IT departments, and digital infrastructure businesses worldwide, ensuring rapid deployment of scalable technical solutions.',
     services: [
@@ -34,7 +34,7 @@ const industryData = {
     title: 'Artificial Intelligence',
     icon: '🧠',
     images: [
-      'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1600&q=85'
+      'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=1920&h=800&q=80&crop=entropy'
     ],
     overview: 'Artificial Intelligence is revolutionizing every major industry through automation, predictive modeling, and intelligent systems. We specialize in sourcing elite AI researchers, data scientists, and ML engineers who can translate complex data into strategic business value.',
     services: [
@@ -65,7 +65,7 @@ const industryData = {
     title: 'Cyber Security',
     icon: '🛡️',
     images: [
-      'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1600&q=85'
+      'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1920&h=800&q=80&crop=entropy'
     ],
     overview: 'As digital threats escalate, robust cyber security is non-negotiable for enterprise stability. Millinoxx Experts places highly certified security professionals who safeguard critical digital assets, networks, and enterprise data infrastructure against global cyber threats.',
     services: [
@@ -96,7 +96,7 @@ const industryData = {
     title: 'Telecommunications',
     icon: '📡',
     images: [
-      'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1600&q=85'
+      'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=1920&h=800&q=80&crop=entropy'
     ],
     overview: 'The Telecom sector forms the backbone of global connectivity. We supply highly specialized experts in 5G, fiber optics, network architecture, and communications infrastructure to leading telecom operators and OEMs worldwide.',
     services: [
@@ -127,7 +127,7 @@ const industryData = {
     title: 'Healthcare and Medical',
     icon: '🏥',
     images: [
-      'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1600&q=85'
+      'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1920&h=800&q=80&crop=entropy'
     ],
     overview: 'Healthcare is a mission-critical sector requiring certified professionals with uncompromising standards. Millinoxx Experts specializes in recruiting medical, paramedical, nursing, and allied health professionals for hospitals, clinics, and healthcare systems across the globe.',
     services: [
@@ -158,7 +158,7 @@ const industryData = {
     title: 'Oil and Gas',
     icon: '🛢️',
     images: [
-      'https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=1600&q=85'
+      'https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?auto=format&fit=crop&w=1920&h=800&q=80&crop=entropy'
     ],
     overview: 'The Oil & Gas industry demands rigorous safety standards and deep technical expertise. We have extensive experience sourcing certified professionals for upstream, midstream, and downstream operations in some of the most challenging environments on earth.',
     services: [
@@ -189,7 +189,7 @@ const industryData = {
     title: 'Petrochemicals',
     icon: '⚗️',
     images: [
-      'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=1600&q=85'
+      'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=1920&h=800&q=80&crop=entropy'
     ],
     overview: 'Petrochemical facilities operate at the highest levels of complexity. We supply the specialized engineering, process, and maintenance talent required to keep plants running efficiently, safely, and profitably.',
     services: [
@@ -220,7 +220,7 @@ const industryData = {
     title: 'Engineering and EPC',
     icon: '🏗️',
     images: [
-      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=85'
+      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1920&h=800&q=80&crop=entropy'
     ],
     overview: 'Engineering, Procurement, and Construction (EPC) projects form the backbone of global infrastructure. We provide multi-disciplinary engineering talent capable of executing mega-projects safely, on time, and within budget.',
     services: [
@@ -251,7 +251,7 @@ const industryData = {
     title: 'Manufacturing',
     icon: '🏭',
     images: [
-      'https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?w=1600&q=85'
+      'https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?auto=format&fit=crop&w=1920&h=800&q=80&crop=entropy'
     ],
     overview: 'Manufacturing is the engine of the industrial economy. Millinoxx Experts supplies skilled, semi-skilled, and leadership manpower for production, quality, maintenance, and engineering functions across all manufacturing sub-sectors.',
     services: [
@@ -282,7 +282,7 @@ const industryData = {
     title: 'Power Plant',
     icon: '⚡',
     images: [
-      'https://images.unsplash.com/photo-1548669985-9ef9d7b76e23?w=1600&q=85'
+      'https://images.unsplash.com/photo-1578776349090-de61da00ff1a?auto=format&fit=crop&w=1920&h=800&q=80&crop=entropy'
     ],
     overview: 'The Power sector encompasses thermal, hydro, solar, and nuclear power plants. We provide the specialized engineering and operational manpower required to keep critical energy infrastructure running safely and at peak performance.',
     services: [
@@ -313,7 +313,7 @@ const industryData = {
     title: 'Water Treatment',
     icon: '💧',
     images: [
-      'https://images.unsplash.com/photo-1582455986986-1d1cb535ce9a?w=1600&q=85'
+      'https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1920&h=800&q=80&crop=entropy'
     ],
     overview: 'Water and wastewater management is critical for global sustainability. We recruit specialized professionals for desalination plants, sewage treatment facilities, and civic water infrastructure projects.',
     services: [
@@ -344,7 +344,7 @@ const industryData = {
     title: 'MEP and HVAC',
     icon: '🔧',
     images: [
-      'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1600&q=85'
+      'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1920&h=800&q=80&crop=entropy'
     ],
     overview: 'Mechanical, Electrical, and Plumbing (MEP) engineering brings buildings to life. We provide expert MEP professionals for construction, maintenance, and commissioning projects spanning commercial towers to industrial complexes.',
     services: [
@@ -375,7 +375,7 @@ const industryData = {
     title: 'Construction and Real Estate',
     icon: '🏗️',
     images: [
-      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=85'
+      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&h=800&q=80&crop=entropy'
     ],
     overview: 'From mega infrastructure developments to luxury residential real estate, Millinoxx Experts sources the skilled professionals needed to bring ambitious architectural projects to life on time and within budget.',
     services: [
@@ -406,7 +406,7 @@ const industryData = {
     title: 'Heavy Equipment',
     icon: '🚜',
     images: [
-      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=85'
+      'https://images.unsplash.com/photo-1580901369227-308f6f40bdeb?auto=format&fit=crop&w=1920&h=800&q=80&crop=entropy'
     ],
     overview: 'The Heavy Equipment sector requires specialized operators, mechanics, and logistics experts. We provide highly skilled professionals to manage, operate, and maintain industrial machinery across global mega-projects.',
     services: [
@@ -437,7 +437,7 @@ const industryData = {
     title: 'Shipping and Marine',
     icon: '⚓',
     images: [
-      'https://images.unsplash.com/photo-1494587351196-bbf5f29cff42?w=1600&q=85'
+      'https://images.unsplash.com/photo-1494587351196-bbf5f29cff42?auto=format&fit=crop&w=1920&h=800&q=80&crop=entropy'
     ],
     overview: 'The shipping and marine industry moves global trade. Millinoxx Experts provides qualified maritime professionals—from deck officers to marine engineers—for vessels, ports, shipyards, and offshore facilities worldwide.',
     services: [
@@ -468,7 +468,7 @@ const industryData = {
     title: 'Aviation and Aerospace',
     icon: '✈️',
     images: [
-      'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1600&q=85'
+      'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1920&h=800&q=80&crop=entropy'
     ],
     overview: 'Aviation demands the absolute highest standards of technical precision and safety. We place qualified aviation professionals with airlines, MROs, airports, and aerospace OEMs globally.',
     services: [
@@ -499,7 +499,7 @@ const industryData = {
     title: 'Banking and Finance',
     icon: '💰',
     images: [
-      'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1600&q=85'
+      'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1920&h=800&q=80&crop=entropy'
     ],
     overview: 'Banking and finance require precision, compliance, and deep domain expertise. We recruit highly qualified financial professionals for global banks, investment firms, insurance companies, and fintech startups.',
     services: [
@@ -530,7 +530,7 @@ const industryData = {
     title: 'Agriculture',
     icon: '🌾',
     images: [
-      'https://images.unsplash.com/photo-1500651230702-0e2d8a49d4e6?w=1600&q=85'
+      'https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=1920&h=800&q=80&crop=entropy'
     ],
     overview: 'Modern agriculture integrates technology and sustainability to feed the world. We provide agri-professionals for large-scale farms, food processing, agricultural research, and agribusiness operations globally.',
     services: [
@@ -561,7 +561,7 @@ const industryData = {
     title: 'FMCG and Garments',
     icon: '🛒',
     images: [
-      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=85'
+      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1920&h=800&q=80&crop=entropy'
     ],
     overview: 'The FMCG and garments sectors require highly specialized talent in design, production, retail, and complex global supply chains. Millinoxx Experts connects manufacturers and retail brands with skilled industry professionals.',
     services: [

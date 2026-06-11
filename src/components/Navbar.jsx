@@ -63,14 +63,14 @@ export default function Navbar() {
   const location = useLocation()
   const navRef = useRef(null)
 
-  // Close everything on route change
+  // ── Reset all states on route change ──────────────────────────────────────
   useEffect(() => {
     setMobileOpen(false)
     setActiveDropdown(null)
     setMobileExpanded(null)
   }, [location.pathname])
 
-  // Close dropdown when clicking outside the navbar
+  // ── Close dropdown when clicking outside the navbar ────────────────────────
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (navRef.current && !navRef.current.contains(e.target)) {
@@ -80,6 +80,27 @@ export default function Navbar() {
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
+
+  // ── Close dropdown on ESC key ──────────────────────────────────────────────
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setActiveDropdown(null)
+        setMobileOpen(false)
+      }
+    }
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [])
+
+  // ── Helpers ────────────────────────────────────────────────────────────────
+  const closeAll = () => setActiveDropdown(null)
+
+  const handleToggle = (label) => {
+    setActiveDropdown(prev => prev === label ? null : label)
+  }
+
+  const isOpen = (label) => activeDropdown === label
 
   const isActive = (path) => location.pathname === path
   const isParentActive = (link) => {
@@ -96,7 +117,7 @@ export default function Navbar() {
         <nav className="bg-[#004b75] border-b border-white/10 py-3.5 shadow-lg">
           <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
             {/* Logo */}
-            <Link to="/" className="flex items-center flex-shrink-0 group">
+            <Link to="/" className="flex items-center flex-shrink-0 group" onClick={closeAll}>
               <img src={logoImg} alt="Millinoxx Engineering & Technology" className="h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-300" />
             </Link>
 
@@ -104,35 +125,48 @@ export default function Navbar() {
             <div className="hidden lg:flex items-center gap-5">
               {navLinks.map((link) =>
                 link.dropdown || link.groupedDropdown ? (
-                  <div key={link.label} className="relative group py-2">
+                  <div
+                    key={link.label}
+                    className="relative py-2"
+                  >
                     {link.path ? (
                       <Link
                         to={link.path}
+                        onClick={(e) => {
+                          e.preventDefault()
+                          handleToggle(link.label)
+                        }}
                         className={`flex items-center gap-1 px-2.5 py-1 text-sm font-medium transition-colors duration-200 hover:text-gold
-                          ${isParentActive(link) ? 'text-gold' : 'text-white'}`}
+                          ${isParentActive(link) || isOpen(link.label) ? 'text-gold' : 'text-white'}`}
                       >
                         {link.label}
                       </Link>
                     ) : (
                       <button
+                        onClick={(e) => {
+                          e.preventDefault()
+                          handleToggle(link.label)
+                        }}
                         className={`flex items-center gap-1 px-2.5 py-1 text-sm font-medium transition-colors duration-200 hover:text-gold
-                          ${isParentActive(link) ? 'text-gold' : 'text-white'}`}
+                          ${isParentActive(link) || isOpen(link.label) ? 'text-gold' : 'text-white'}`}
                       >
                         {link.label}
                       </button>
                     )}
 
                     {/* Dropdown panel */}
-                    <div className={`absolute top-full pt-2 z-[200] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-out
+                    <div className={`absolute top-full pt-2 z-[200] transition-all duration-200 ease-out
+                      ${isOpen(link.label) ? 'opacity-100 visible' : 'opacity-0 invisible'}
                       ${link.isMegaMenu ? 'left-1/2 -translate-x-[45%] w-[960px]' : 'left-0 min-w-[240px]'}`}>
                       <div className={`bg-white shadow-2xl rounded-lg border border-gray-100 max-h-[75vh] overflow-y-auto
                         ${link.isMegaMenu ? 'p-8 grid gap-x-8 gap-y-4 ' + (link.groupedDropdown ? 'grid-cols-4' : 'grid-cols-3') : 'p-2 flex flex-col space-y-1'}`}>
-                        
+
                         {/* Normal Dropdown */}
                         {link.dropdown && !link.isMegaMenu && link.dropdown.map(item => (
                           <Link
                             key={item.path}
                             to={item.path}
+                            onClick={closeAll}
                             className={`block py-2 px-4 text-sm text-gray-600 hover:text-navy hover:bg-gray-50 transition-colors duration-150 rounded-md
                               ${isActive(item.path) ? 'text-navy bg-gray-50 font-semibold' : ''}`}
                           >
@@ -145,9 +179,10 @@ export default function Navbar() {
                           <Link
                             key={item.path}
                             to={item.path}
+                            onClick={closeAll}
                             className={`flex items-center gap-3 py-2.5 px-4 text-sm transition-colors duration-150 rounded-md border border-transparent
-                              ${item.prominent 
-                                ? 'bg-navy/5 font-semibold text-navy hover:bg-navy/10 border-navy/10' 
+                              ${item.prominent
+                                ? 'bg-navy/5 font-semibold text-navy hover:bg-navy/10 border-navy/10'
                                 : 'text-gray-600 hover:text-navy hover:bg-gray-50'}
                               ${isActive(item.path) ? 'text-navy bg-gray-50 font-semibold' : ''}`}
                           >
@@ -165,6 +200,7 @@ export default function Navbar() {
                                 <Link
                                   key={item.path}
                                   to={item.path}
+                                  onClick={closeAll}
                                   className={`block py-2 px-3 text-sm text-gray-600 hover:text-navy hover:bg-gray-50 transition-colors duration-150 rounded-md
                                     ${isActive(item.path) ? 'text-navy bg-gray-50 font-semibold' : ''}`}
                                 >
@@ -267,7 +303,7 @@ export default function Navbar() {
                           {link.label}
                         </span>
                       )}
-                      
+
                       <button
                         onClick={() => setMobileExpanded(mobileExpanded === link.label ? null : link.label)}
                         className="p-2 text-gray-500 hover:text-navy rounded-md"
@@ -276,14 +312,14 @@ export default function Navbar() {
                         <span className="text-xl leading-none">{mobileExpanded === link.label ? '−' : '+'}</span>
                       </button>
                     </div>
-                    
+
                     {mobileExpanded === link.label && (
                       <div className="ml-4 mb-2 border-l-2 border-gray-200 pl-3 mt-1">
                         {link.dropdown && link.dropdown.map(item => (
                           <Link
                             key={item.path}
                             to={item.path}
-                            onClick={() => setMobileOpen(false)}
+                            onClick={() => { setMobileOpen(false); setMobileExpanded(null) }}
                             className={`flex items-center gap-2 py-2 px-3 text-sm rounded transition-colors ${item.prominent ? 'font-semibold text-navy bg-navy/5' : ''} ${isActive(item.path) ? 'text-navy font-semibold bg-gray-50' : 'text-gray-600 hover:text-navy hover:bg-gray-50'}`}
                           >
                             {item.icon && <item.icon size={14} className={item.prominent ? 'text-gold' : 'text-gray-400'} />}
@@ -298,7 +334,7 @@ export default function Navbar() {
                                 <Link
                                   key={item.path}
                                   to={item.path}
-                                  onClick={() => setMobileOpen(false)}
+                                  onClick={() => { setMobileOpen(false); setMobileExpanded(null) }}
                                   className={`block py-2 px-3 text-sm rounded transition-colors ${isActive(item.path) ? 'text-navy font-semibold bg-gray-50' : 'text-gray-600 hover:text-navy hover:bg-gray-50'}`}
                                 >
                                   {item.label}

@@ -4,11 +4,6 @@ import HeroSlider from '../../components/HeroSlider'
 import { CheckCircle, ArrowRight, Lightbulb, Zap, Rocket, Shield } from 'lucide-react'
 import { servicesData } from '../../config/data'
 
-const defaultSlides = [
-  { image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&q=85' },
-  { image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1600&q=85' }
-]
-
 const valueAdded = [
   'Custom Enterprise Solutions',
   'Seamless Integration',
@@ -34,10 +29,7 @@ export default function ServicePlaceholder({ slug }) {
     )
   }
 
-  const slides = [
-    { image: service.image },
-    ...defaultSlides
-  ].slice(0, 2)
+  const slides = [{ image: service.image }]
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
