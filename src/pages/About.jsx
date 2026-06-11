@@ -42,10 +42,10 @@ export default function About() {
               <h2 className="font-heading text-4xl font-bold text-navy mb-6">About Millinoxx Experts</h2>
               <div className="w-12 h-0.5 bg-gold mb-8" />
               <p className="text-muted leading-relaxed mb-5">
-                At Millinoxx Experts, we are devoted to creating and sustaining a meaningful difference in your staffing strategies. As a highly reputed headhunting and manpower recruitment firm, we've built our name on delivering outstanding client service and connecting top-tier talent with organizations across the globe.
+                At Millinoxx Experts, we are devoted to creating and sustaining a meaningful difference in your staffing strategies. As a highly reputed headhunting and manpower recruitment firm, we've built our name on delivering outstanding client service and connecting top tier talent with organizations across the globe.
               </p>
               <p className="text-muted leading-relaxed mb-8">
-                With successful placements across India, the Gulf, Europe, the UK, the USA, and beyond, we partner with businesses of all sizes—from startups to industry leaders—ensuring their workforce is not only skilled but also aligned with their long-term goals.
+                With successful placements across India, the Gulf, Europe, the UK, the USA, and beyond, we partner with businesses of all sizes from startups to industry leaders ensuring their workforce is not only skilled but also aligned with their long term goals.
               </p>
               <Link to="/about/company-profile" className="btn-gold inline-flex items-center gap-2">
                 Read Full Profile <ArrowRight size={16} />
@@ -85,10 +85,10 @@ export default function About() {
           <motion.div {...fadeInUp} className="border-l-4 border-gold pl-8">
             <h3 className="font-heading text-2xl font-bold text-navy mb-4">Our Commitment</h3>
             <p className="text-muted leading-relaxed mb-5">
-              We don't just fill vacancies—we build teams. At Millinoxx Experts, we understand that employers today seek more than just capable candidates. You need productive, team-oriented professionals with the right mindset, adaptability, and cultural fit to grow with your organization.
+              We don't just fill vacancies we build teams. At Millinoxx Experts, we understand that employers today seek more than just capable candidates. You need productive, team oriented professionals with the right mindset, adaptability, and cultural fit to grow with your organization.
             </p>
             <p className="text-muted leading-relaxed">
-              Our recruitment process is designed to go deeper—evaluating attitude, alignment, and potential—so that every hire is a step toward your company's vision.
+              Our recruitment process is designed to go deeper evaluating attitude, alignment, and potential so that every hire is a step toward your company's vision.
             </p>
           </motion.div>
         </div>

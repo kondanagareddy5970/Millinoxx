@@ -1,26 +1,36 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import HeroSlider from '../../components/HeroSlider'
-import { CheckCircle, ArrowRight, Code, Cloud, Shield, Database, Monitor, Cpu } from 'lucide-react'
-
-const slides = [
-  { image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&h=800&q=80&crop=entropy' }
-]
+import { CheckCircle, ArrowRight, Lightbulb, Zap, Rocket, Shield } from 'lucide-react'
+import { servicesData } from '../../config/data'
 
 const valueAdded = [
-  'Software & App Development',
-  'Cloud Architecture & Migration',
-  'Cybersecurity & Compliance',
-  'Data Science & Analytics',
-  'DevOps & SRE',
-  'Digital Transformation Consulting'
+  'Custom Enterprise Solutions',
+  'Seamless Integration',
+  '24/7 Monitoring & Support',
+  'Scalable Architecture',
+  'Continuous Optimization',
+  'Comprehensive Training'
 ]
-
-const techStack = ['React', 'Node.js', 'Python', 'Java', 'AWS', 'Azure', 'GCP', 'Kubernetes', 'Docker', 'TensorFlow', 'Salesforce', 'SAP']
 
 const fadeInUp = { initial: { opacity: 0, y: 40 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 0.7 } }
 
-export default function ItServices() {
+export default function ServicePlaceholder({ slug }) {
+  const service = servicesData.find(s => s.path === `/services/${slug}`)
+  
+  if (!service) {
+    return (
+      <div className="min-h-[60vh] flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="font-heading text-3xl text-navy mb-4">Service Not Found</h1>
+          <Link to="/" className="btn-gold">Go Home</Link>
+        </div>
+      </div>
+    )
+  }
+
+  const slides = [{ image: service.image }]
+
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
       <div className="relative">
@@ -29,7 +39,7 @@ export default function ItServices() {
           <div className="max-w-7xl mx-auto px-6">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
               <span className="text-gold text-sm font-semibold tracking-[0.25em] uppercase block mb-3">Our Services</span>
-              <h1 className="font-heading text-5xl font-bold text-white mb-4">Information Technology Services</h1>
+              <h1 className="font-heading text-5xl font-bold text-white mb-4">{service.title}</h1>
               <div className="w-16 h-0.5 bg-gold" />
             </motion.div>
           </div>
@@ -40,9 +50,7 @@ export default function ItServices() {
         <div className="max-w-7xl mx-auto flex items-center gap-2 text-sm text-muted">
           <Link to="/" className="hover:text-gold transition-colors">Home</Link>
           <span>/</span>
-          <Link to="/services/it-services" className="hover:text-gold transition-colors">Services</Link>
-          <span>/</span>
-          <span className="text-navy font-medium">IT Services</span>
+          <span className="text-navy font-medium">{service.title}</span>
         </div>
       </div>
 
@@ -52,34 +60,24 @@ export default function ItServices() {
           <motion.div {...fadeInUp} className="mb-14 grid grid-cols-1 lg:grid-cols-3 gap-10">
             <div className="lg:col-span-2">
               <div className="flex items-center gap-3 mb-5">
-                <Code size={28} className="text-gold" />
-                <h2 className="font-heading text-2xl font-bold text-navy">Technology Talent for the Digital Age</h2>
+                <Lightbulb size={28} className="text-gold" />
+                <h2 className="font-heading text-2xl font-bold text-navy">Transform Your Business with {service.title}</h2>
               </div>
               <p className="text-muted leading-relaxed mb-5">
-                In today's technology-driven world, having the right IT talent is critical to organizational success. Millinoxx Experts specializes in sourcing, screening, and placing top-tier IT professionals across all disciplines — from software engineering to cloud architecture and cybersecurity.
+                {service.desc}
               </p>
               <p className="text-muted leading-relaxed">
-                We work with startups, SMEs, and Fortune 500 companies, providing permanent, contract, and project-based IT staffing solutions that align with your technology roadmap and business objectives.
+                Our specialized {service.title.toLowerCase()} are currently being updated with comprehensive details. Our expert team leverages cutting-edge technology and industry best practices to deliver solutions that drive real business value. Please contact our team to learn more about how we can support your business requirements in this domain.
               </p>
             </div>
             <div className="bg-navy rounded-card p-7 text-white">
               <div className="font-heading text-xl font-bold text-gold mb-4">Quick Facts</div>
               <div className="space-y-3">
-                <div className="flex items-center gap-3 text-sm"><Monitor size={16} className="text-gold" /><span>Full-stack Capabilities</span></div>
-                <div className="flex items-center gap-3 text-sm"><Cloud size={16} className="text-gold" /><span>Cloud Infrastructure Experts</span></div>
-                <div className="flex items-center gap-3 text-sm"><Shield size={16} className="text-gold" /><span>Security & Compliance Focus</span></div>
-                <div className="flex items-center gap-3 text-sm"><Cpu size={16} className="text-gold" /><span>Modern DevOps Practices</span></div>
+                <div className="flex items-center gap-3 text-sm"><Rocket size={16} className="text-gold" /><span>Rapid Implementation</span></div>
+                <div className="flex items-center gap-3 text-sm"><Shield size={16} className="text-gold" /><span>Enterprise-Grade Security</span></div>
+                <div className="flex items-center gap-3 text-sm"><Zap size={16} className="text-gold" /><span>High Performance</span></div>
+                <div className="flex items-center gap-3 text-sm"><Lightbulb size={16} className="text-gold" /><span>Innovative Solutions</span></div>
               </div>
-            </div>
-          </motion.div>
-
-          {/* Tech Stack */}
-          <motion.div {...fadeInUp} className="mb-14">
-            <h3 className="font-heading text-2xl font-bold text-navy mb-6">Technology Stacks We Cover</h3>
-            <div className="flex flex-wrap gap-3">
-              {techStack.map((t, i) => (
-                <span key={i} className="bg-gold/10 text-navy border border-gold/30 rounded-full px-5 py-2 text-sm font-medium">{t}</span>
-              ))}
             </div>
           </motion.div>
 
@@ -97,7 +95,7 @@ export default function ItServices() {
           </motion.div>
 
           <motion.div {...fadeInUp} className="text-center">
-            <Link to="/contact" className="btn-gold inline-flex items-center gap-2">Get In Touch <ArrowRight size={16} /></Link>
+            <Link to="/contact" className="btn-gold inline-flex items-center gap-2">Contact Us For Details <ArrowRight size={16} /></Link>
           </motion.div>
         </div>
       </section>

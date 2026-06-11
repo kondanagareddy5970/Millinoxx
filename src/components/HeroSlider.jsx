@@ -38,15 +38,19 @@ export default function HeroSlider({ slides, height = '100vh', showOverlay = tru
       {slides.map((slide, i) => (
         <div
           key={i}
-          className="absolute inset-0 hero-slide"
+          className="absolute inset-0"
           style={{
-            backgroundImage: `url(${slide.image})`,
-            backgroundPosition: slide.position || 'center',
             opacity: i === current ? 1 : 0,
             transition: 'opacity 1s ease-in-out',
             zIndex: i === current ? 2 : i === prev ? 1 : 0,
           }}
         >
+          <img 
+            src={slide.image} 
+            alt="Hero Banner" 
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ objectPosition: slide.position || 'center' }}
+          />
           {showOverlay && (
             <div className="absolute inset-0 bg-gradient-to-r from-navy/80 via-navy/60 to-transparent" />
           )}

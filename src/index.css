@@ -123,3 +123,4 @@
 .industry-icon-card {
   @apply flex flex-col items-center justify-center p-6 bg-white rounded-card shadow-card border border-transparent hover:border-gold transition-all duration-300 cursor-pointer hover:-translate-y-1;
 }
+

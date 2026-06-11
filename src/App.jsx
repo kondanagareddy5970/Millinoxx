@@ -21,9 +21,11 @@ import IndianRecruitment from './pages/services/IndianRecruitment'
 import ShutdownMaintenance from './pages/services/ShutdownMaintenance'
 import DeputationOutsourcing from './pages/services/DeputationOutsourcing'
 import ItServices from './pages/services/ItServices'
+import ServicePlaceholder from './pages/services/ServicePlaceholder'
 
 // Industries
 import IndustryPage from './pages/industries/IndustryPage'
+import { servicesData, industriesData } from './config/data'
 
 // Gallery
 import OfficeGallery from './pages/gallery/OfficeGallery'
@@ -57,28 +59,24 @@ function AppRoutes() {
           <Route path="/about/testimonials" element={<Testimonials />} />
           <Route path="/about/company-video" element={<CompanyVideo />} />
 
+          {/* Services Routes */}
           <Route path="/services/international-recruitment" element={<InternationalRecruitment />} />
           <Route path="/services/indian-recruitment" element={<IndianRecruitment />} />
           <Route path="/services/shutdown-maintenance" element={<ShutdownMaintenance />} />
           <Route path="/services/deputation-outsourcing" element={<DeputationOutsourcing />} />
           <Route path="/services/it-services" element={<ItServices />} />
+          <Route path="/services/ai-solutions" element={<ServicePlaceholder slug="ai-solutions" />} />
+          <Route path="/services/ai-automation" element={<ServicePlaceholder slug="ai-automation" />} />
+          <Route path="/services/machine-learning" element={<ServicePlaceholder slug="machine-learning" />} />
+          <Route path="/services/gen-ai" element={<ServicePlaceholder slug="gen-ai" />} />
+          <Route path="/services/cloud-devops" element={<ServicePlaceholder slug="cloud-devops" />} />
+          <Route path="/services/cyber-security" element={<ServicePlaceholder slug="cyber-security" />} />
+          <Route path="/services/data-engineering" element={<ServicePlaceholder slug="data-engineering" />} />
 
-          <Route path="/industries/heavy-equipment" element={<IndustryPage slug="heavy-equipment" />} />
-          <Route path="/industries/power-plant" element={<IndustryPage slug="power-plant" />} />
-          <Route path="/industries/oil-gas" element={<IndustryPage slug="oil-gas" />} />
-          <Route path="/industries/mep" element={<IndustryPage slug="mep" />} />
-          <Route path="/industries/construction" element={<IndustryPage slug="construction" />} />
-          <Route path="/industries/manufacturing" element={<IndustryPage slug="manufacturing" />} />
-          <Route path="/industries/shipping" element={<IndustryPage slug="shipping" />} />
-          <Route path="/industries/automotive" element={<IndustryPage slug="automotive" />} />
-          <Route path="/industries/aviation" element={<IndustryPage slug="aviation" />} />
-          <Route path="/industries/agriculture" element={<IndustryPage slug="agriculture" />} />
-          <Route path="/industries/hospitality" element={<IndustryPage slug="hospitality" />} />
-          <Route path="/industries/garments" element={<IndustryPage slug="garments" />} />
-          <Route path="/industries/hospitals" element={<IndustryPage slug="hospitals" />} />
-          <Route path="/industries/it-telecom" element={<IndustryPage slug="it-telecom" />} />
-          <Route path="/industries/banking-finance" element={<IndustryPage slug="banking-finance" />} />
-          <Route path="/industries/cyber-security" element={<IndustryPage slug="cyber-security" />} />
+          {/* Industries Routes */}
+          {industriesData.map(industry => (
+            <Route key={industry.path} path={industry.path} element={<IndustryPage slug={industry.path.replace('/industries/', '')} />} />
+          ))}
 
           <Route path="/gallery/office" element={<OfficeGallery />} />
           <Route path="/gallery/work" element={<WorkGallery />} />
